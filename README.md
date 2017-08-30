@@ -12,7 +12,8 @@ function myFunction() {
 	var iframeDocument = document.getElementById('iframePagina1').contentDocument;  
 	var myDiv = iframeDocument.getElementById('firstHeading');  
     document.getElementById("caja").innerHTML = myDiv.innerHTML;}  
-</script>```
+</script>
+```
 
 En el ejemplo anterior, al hacer click en el texto "Aquí mostrará el contenido", mostrará "Martillo" si es la versión descargada, la de iframePagina1, pero no si iframePagina2 es desde wikipedia.  
 
