@@ -17,8 +17,14 @@ La sitaxis JSON es muy sencilla:
 	* los nombres deben ir entre comillas dobles " ",  
 	* los valores string también van entre comillas dobles " ",  
 
+Al igual que en JS, podemos acceder a los valores mediante la notación punto (json.name), o la notación de corchetes (json["name"]).  
+'You can request JSON from the server by using an AJAX request'  --> esto será la siguiente etapa, ver https://www.w3schools.com/js/js_json_parse.asp#JSON_From_the_Server  
+
 
 ## Extraer texto de otra web
+**¿Funciona?**  
+Según lo leído en https://www.w3schools.com/js/js_json_jsonp.asp, con JSONP se puede superar el problema de los orígenes cruzados ('distintos directorios'), hay que ampliarlo.   
+(*'JSONP is a method for sending JSON data without worrying about cross-domain issues. JSONP does not use the XMLHttpRequest object. JSONP uses the "script" tag instead.')
 
 NO funciona: bueno, sólo funciona para páginas en el mismo directorio, así que para versiones locales.  
 ```[javascript]  
