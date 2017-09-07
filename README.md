@@ -2,6 +2,11 @@
 ## Lo que voy aprendiendo sobre Html, CSS y Javascript
 En cada apartado, señalo primero lo que FUNCIONA, y después lo que NO funciona.
 
+## Analizar el código en la consola
+FUNCIONA  
+console.log(lo que quieras ver en la consola)  
+
+
 ## JSON, lo básico
 JSON es una forma de compartir datos entre el cliente y el servidor.  
 JSON es texto, string, pero escrito en la notación JavaScript. Así, es fácil convertirlo en **_objetos_** Javascript.  
