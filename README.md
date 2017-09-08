@@ -58,4 +58,29 @@ function myFunction() {
 En el ejemplo anterior, al hacer click en el texto "Aquí mostrará el contenido", mostrará "Martillo" si es la versión descargada, la de iframePagina1, pero no si iframePagina2 es desde wikipedia.  
 
 
+## Mostrar imágenes de otra web  
+FUNCIONA  
+Especificar el atributo src: <img id="scream" width="300" height="400" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">  
+
+## Mostrar parte de una imagen  
+NO FUNCIONA  
+No funciona si se intenta "a lo bruto", como por ejemplo:  <img id="jaja" width="200" height="120" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">  
+El resultado es que la imagen es muy pequeña, se adapta el tamaño al tamaño del marco.  
+
+FUNCIONA  
+Se usa el elemento <canvas>, elemento HTML que permite dibujar en él. Se "dibuja" la imagen que nos interesa con Javascript, especificando el punto (superior izquierdo) donde comienza la imagen que queremos mostrar.  
+```function() {
+  	var c = document.getElementById("myCanvas");
+	var ctx = c.getContext("2d");
+	var img = document.getElementById("scream");
+	ctx.drawImage(img, -520,-145);  
+  
+<canvas id="myCanvas" width="200" height="120" style="border:1px solid #000000"; onload='myFunction()'></canvas>
+```  
+
+
+
+
+   
+	
 
