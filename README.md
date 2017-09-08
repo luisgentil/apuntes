@@ -27,11 +27,22 @@ Al igual que en JS, podemos acceder a los valores mediante la notación punto (j
 
 
 ## Extraer texto de otra web
+
+**Funciona en API MediaWiki**  
+Para saltar el CORS, hay que saltar la restricción del origen, permitiendo cualquier origen, añadiendo &origin=* en la consulta.  
+>Unauthenticated CORS requests may be made from any origin by setting the "origin" request parameter to (asterisc). In this case MediaWiki will include the Access-Control-Allow-Credentials: false header in the response and will process the request as if logged out (in case credentials are somehow sent anyway).  
+
+From: [https://www.mediawiki.org/wiki/API:Cross-site_requests]  
+En el ejemplo siguiente, https://es.wikipedia.org/w/api.php?action=query&titles=Montehermoso&prop=revisions&rvprop=content&format=json&origin=* sí puede ser cargado en un div a partir de la respuesta a esa consulta.
+
 **¿Funciona?**  
 Según lo leído en https://www.w3schools.com/js/js_json_jsonp.asp, con JSONP se puede superar el problema de los orígenes cruzados ('distintos directorios'), hay que ampliarlo.   
-(*'JSONP is a method for sending JSON data without worrying about cross-domain issues. JSONP does not use the XMLHttpRequest object. JSONP uses the "script" tag instead.')
+(*'JSONP is a method for sending JSON data without worrying about cross-domain issues. JSONP does not use the XMLHttpRequest object. JSONP uses the "script" tag instead.')*  
+Habría que comprobar las referencias, y buscar la explicación a la función callback de la que se habla en algunas de ellas.  
 
-NO funciona: bueno, sólo funciona para páginas en el mismo directorio, así que para versiones locales.  
+
+**NO funciona**  
+Bueno, sólo funciona para páginas en el mismo directorio, así que para versiones locales.  
 ```[javascript]  
 <div id="caja" onclick="myFunction()">Aquí mostrará el contenido </div>  
 <iframe id="iframePagina1" src="martillo.htm"></iframe>  
@@ -45,4 +56,6 @@ function myFunction() {
 ```
 
 En el ejemplo anterior, al hacer click en el texto "Aquí mostrará el contenido", mostrará "Martillo" si es la versión descargada, la de iframePagina1, pero no si iframePagina2 es desde wikipedia.  
+
+
 
