@@ -5,8 +5,8 @@ Orden inverso (lo más reciente arriba)
 
 ## Índice
 - [Tips de sintaxis MD para escribir archivos README.md](#tips-de-sintaxis-md-para-escribir-archivos-readmemd)  
-- [Analizar el código en la consola](#analizar-el-código-en-la-consola)  
 - [Llamada a una función, con parámetros](#llamada-a-una-función-con-parámetros)  
+- [Analizar el código en la consola](#analizar-el-código-en-la-consola)  
 - [JSON, lo básico](#json-lo-básico)  
 - [Extraer texto de otra web](#extraer-texto-de-otra-web)  
 - [Mostrar imágenes de otra web](#mostrar-imágenes-de-otra-web)  
@@ -82,14 +82,14 @@ En el ejemplo anterior, al hacer click en el texto "Aquí mostrará el contenido
 
 ## Mostrar imágenes de otra web  
 FUNCIONA  
-Especificar el atributo src: <img id="scream" width="300" height="400" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">  
+Especificar el atributo src: `<img id="scream" width="300" height="400" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">`  <img id="scream" width="300" height="400" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">  
 
 ## Mostrar parte de una imagen  
 NO FUNCIONA  
-No funciona si se intenta "a lo bruto", como por ejemplo:  <img id="jaja" width="200" height="120" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">  
+No funciona si se intenta "a lo bruto", como por ejemplo:  `<img id="jaja" width="200" height="120" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">`  <img id="jaja" width="200" height="120" src="http://www.meteoclimatic.net/addons/graf24hh.php?st=ESAND4100000041960A">  
 El resultado es que la imagen es muy pequeña, se adapta el tamaño al tamaño del marco.  
 
-FUNCIONA  
+**FUNCIONA**  
 Se usa el elemento <canvas>, elemento HTML que permite dibujar en él. Se "dibuja" la imagen que nos interesa con Javascript, especificando el punto (superior izquierdo) donde comienza la imagen que queremos mostrar.  
 ```javascrpit  
    function() {  
