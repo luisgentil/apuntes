@@ -1,6 +1,26 @@
 # Apuntes 
 ## Lo que voy aprendiendo sobre Html, CSS y Javascript
-En cada apartado, señalo primero lo que FUNCIONA, y después lo que NO funciona.
+En cada apartado, señalo primero lo que FUNCIONA, y después lo que NO funciona.  
+Orden inverso (lo más reciente arriba)  
+
+## Índice
+- [Tips de sintaxis 'MD' para escribir archivos README.md](#Tips-de-sintaxis-'MD'-para-escribir-archivos-README.md)  
+- [Analizar el código en la consola](#Analizar-el-código-en-la-consola)  
+- [Llamada a una función, con parámetros](#Llamada-a-una-función,-con-parámetros)  
+
+## Llamada a una función con parámetros  
+FUNCIONA  
+A veces hay que hacer una llamada a una función, por ejemplo:  
+`var myPause = setInterval(funciónCadaIntervalo, milisegundos);`  
+
+Con esa sintaxis no se puede enviar un parámetro con la llamada a la fucniónCadaIntervalo.   
+La solución: especificar la sintaxis mediante la expresión funtion(), y entre llaves hacer la llamada a la función con sus parámetros.  
+`var myPause = setInterval(function() {funciónCadaIntervalo(parámetro, otroParámetro)}, milisegundos);`  
+
+
+
+## Tips de sintaxis 'MD' para escribir archivos README.md  
+https://github.com/jfasebook/SoyInformatico/blob/master/README.md  
 
 ## Analizar el código en la consola
 FUNCIONA  
@@ -43,7 +63,7 @@ Habría que comprobar las referencias, y buscar la explicación a la función ca
 
 **NO funciona**  
 Bueno, sólo funciona para páginas en el mismo directorio, así que para versiones locales.  
-```[javascript]  
+```javascript  
 <div id="caja" onclick="myFunction()">Aquí mostrará el contenido </div>  
 <iframe id="iframePagina1" src="martillo.htm"></iframe>  
 <iframe id="iframePagina2" src="https://es.wikipedia.org/wiki/Martillo"></iframe>  
@@ -69,18 +89,11 @@ El resultado es que la imagen es muy pequeña, se adapta el tamaño al tamaño d
 
 FUNCIONA  
 Se usa el elemento <canvas>, elemento HTML que permite dibujar en él. Se "dibuja" la imagen que nos interesa con Javascript, especificando el punto (superior izquierdo) donde comienza la imagen que queremos mostrar.  
-```function() {
-  	var c = document.getElementById("myCanvas");
-	var ctx = c.getContext("2d");
-	var img = document.getElementById("scream");
+```javascrpit  
+   function() {  
+  	var c = document.getElementById("myCanvas");  
+	var ctx = c.getContext("2d");  
+	var img = document.getElementById("scream");  
 	ctx.drawImage(img, -520,-145);  
-  
-<canvas id="myCanvas" width="200" height="120" style="border:1px solid #000000"; onload='myFunction()'></canvas>
+<canvas id="myCanvas" width="200" height="120" style="border:1px solid #000000"; onload='myFunction()'></canvas>   
 ```  
-
-
-
-
-   
-	
-
