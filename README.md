@@ -4,11 +4,15 @@ En cada apartado, señalo primero lo que FUNCIONA, y después lo que NO funciona
 Orden inverso (lo más reciente arriba)  
 
 ## Índice
-- [Tips de sintaxis 'MD' para escribir archivos README.md](#Tips-de-sintaxis-'MD'-para-escribir-archivos-README.md)  
-- [Analizar el código en la consola](#Analizar-el-código-en-la-consola)  
-- [Llamada a una función, con parámetros](#Llamada-a-una-función,-con-parámetros)  
+- [Tips de sintaxis MD para escribir archivos README.md](#tips-de-sintaxis-md-para-escribir-archivos-readmemd)  
+- [Analizar el código en la consola](#analizar-el-código-en-la-consola)  
+- [Llamada a una función, con parámetros](#llamada-a-una-función-con-parámetros)  
+- [JSON, lo básico](#json-lo-básico)  
+- [Extraer texto de otra web](#extraer-texto-de-otra-web)  
+- [Mostrar imágenes de otra web](#mostrar-imágenes-de-otra-web)  
+- [Mostrar parte de una imagen](#mostrar-parte-de-una-imagen)   
 
-## Llamada a una función con parámetros  
+## Llamada a una función, con parámetros  
 FUNCIONA  
 A veces hay que hacer una llamada a una función, por ejemplo:  
 `var myPause = setInterval(funciónCadaIntervalo, milisegundos);`  
@@ -16,8 +20,6 @@ A veces hay que hacer una llamada a una función, por ejemplo:
 Con esa sintaxis no se puede enviar un parámetro con la llamada a la fucniónCadaIntervalo.   
 La solución: especificar la sintaxis mediante la expresión funtion(), y entre llaves hacer la llamada a la función con sus parámetros.  
 `var myPause = setInterval(function() {funciónCadaIntervalo(parámetro, otroParámetro)}, milisegundos);`  
-
-
 
 ## Tips de sintaxis 'MD' para escribir archivos README.md  
 https://github.com/jfasebook/SoyInformatico/blob/master/README.md  
