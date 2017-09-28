@@ -34,8 +34,8 @@ JSON es una forma de compartir datos entre el cliente y el servidor.
 JSON es texto, string, pero escrito en la notación JavaScript. Así, es fácil convertirlo en **_objetos_** Javascript.  
 (recordatorio: un objeto es un conjunto de propiedades, y éstas son pares nombre:valor, que pueden incluir métodos, que son funciones, es decir un par función():definición de función).  
 (No confundir con los Arrays, que son objetos especiales en JS: objetos (por tanto, con pares nombre:valor), cuyos nombres (índices) son números, de ahí la especialidad. Se definen con **[]**)  
-La respuesta que se recibe de un servidor es json, es decir: texto. Para trabajar con ella en JS hay que convertirla en objeto JS, mediante json.parse() --> se conoce como **parsear** la respuesta.  
-En cambio, cuando se quiere enviar información al servidor, sólo se puede enviar como texto. Normalmente tenemos la información como un objeto JS, por lo que tenemos que convertirlo a texto con el método stringify(miObjeto).  
+La respuesta que se recibe de un servidor es json, es decir: texto. Para trabajar con ella en JS hay que convertirla en objeto JS, mediante `json.parse()` --> se conoce como **parsear** la respuesta.  
+En cambio, cuando se quiere enviar información al servidor, sólo se puede enviar como texto. Normalmente tenemos la información como un objeto JS, por lo que tenemos que convertirlo a texto con el método `stringify(miObjeto)`.  
 La sitaxis JSON es muy sencilla:  
 	* los datos se forman con pares nombre:valor,  
 	* los pares de datos se separan con comas,  
@@ -44,7 +44,15 @@ La sitaxis JSON es muy sencilla:
 	* los nombres deben ir entre comillas dobles " ",  
 	* los valores string también van entre comillas dobles " ",  
 
-Al igual que en JS, podemos acceder a los valores mediante la notación punto (json.name), o la notación de corchetes (json["name"]).  
+Al igual que en JS, podemos acceder a los valores mediante la notación punto `(json.name)`, o la notación de corchetes `(json["name"])`.  
+
+Para recorrer las claves del Json, recorriendo todas las claves del objeto, con un loop for "In a for-in loop, use the bracket notation to access the property values:" https://www.w3schools.com/js/js_json_objects.asp  
+`for (numero in respuesta.query.pages) {(···)}`
+
+**Conversión de datos en JSON**
+En la web "Mr Data Converter", https://shancarter.github.io/mr-data-converter/ , se puede acceder a un conversor online de datos CSV --> JSON. Muy útil para convertir una tabla de datos excel en json, lo que puede servir para recopilar información de municipios.  
+En la web http://jsoneditoronline.org/ se puede visualizar fácilmente el contenido de un copy-paste en formato JSON, como por ejemplo las respuestas de Wikipedia.  
+
 'You can request JSON from the server by using an AJAX request'  --> esto será la siguiente etapa, ver https://www.w3schools.com/js/js_json_parse.asp#JSON_From_the_Server  
 
 
