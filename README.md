@@ -8,6 +8,7 @@ Orden inverso (lo más reciente arriba)
 - [Llamada a una función, con parámetros](#llamada-a-una-función-con-parámetros)  
 - [Analizar el código en la consola](#analizar-el-código-en-la-consola)  
 - [JSON, lo básico](#json-lo-básico)  
+- [FireBase, lo básico](#firebase-lo-básico)
 - [Extraer texto de otra web](#extraer-texto-de-otra-web)  
 - [Mostrar imágenes de otra web](#mostrar-imágenes-de-otra-web)  
 - [Mostrar parte de una imagen](#mostrar-parte-de-una-imagen)   
@@ -22,7 +23,7 @@ La solución: especificar la sintaxis mediante la expresión funtion(), y entre 
 `var myPause = setInterval(function() {funciónCadaIntervalo(parámetro, otroParámetro)}, milisegundos);`  
 
 ## Tips de sintaxis 'MD' para escribir archivos README.md  
-https://github.com/jfasebook/SoyInformatico/blob/master/README.md  
+`https://github.com/jfasebook/SoyInformatico/blob/master/README.md`  
 
 ## Analizar el código en la consola
 FUNCIONA  
@@ -55,6 +56,59 @@ En la web http://jsoneditoronline.org/ se puede visualizar fácilmente el conten
 
 'You can request JSON from the server by using an AJAX request'  --> esto será la siguiente etapa, ver https://www.w3schools.com/js/js_json_parse.asp#JSON_From_the_Server  
 
+
+## FireBase, lo básico
+Firebase es muchas cosas, pero yo me quedo con **_"una base de datos online"_**.  
+Hay mucha información y ejemplos acerca de cómo grabar datos, y poco sobre cómo leerlos (en mi ignorancia). La fuente de información más práctica que he encontrado: `https://desarrolloweb.com/articulos/introduccion-firebase-backend-nube.html`.  
+Por lo que he entendido: no hay que leer, sino **suscribirse** a los cambios del valor. Es decir, podemos tener actualizados los datos mediante la conexión que hace (y mantiene) Firebase. Así que para leer, con el valor inicial es suficiente.  
+El código de búsqueda / lectura:  
+en el html: `<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>`  
+Y el script, algo así:  
+```javascript
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "**************",
+    authDomain: "*******.firebaseapp.com",
+    databaseURL: "https://*******.firebaseio.com",
+    projectId: "infotown-****",
+    storageBucket: "infotown-****.appspot.com",
+    messagingSenderId: "*********"
+  };
+  firebase.initializeApp(config);
+  var databaseService = firebase.database();
+
+    function buscarFirebase(pueblo) {
+            var ref = databaseService.ref('municipios');
+            ref.child(pueblo.toLowerCase()).on("value", function(snapshot){
+              resultado = (snapshot.val() || "");
+      document.getElementById("titular").textContent = resultado;
+        });
+    }
+  </script>
+```
+Para grabar, set o update: set sustituye, update actualiza.  
+En FireBase hay otro concepto interesante, el de las **'promesas'**. Simplificando: se hace el intento de grabar, y se ofrecen dos opciones, una por si hay éxito y otra si hay error. Así, en la consola (y en pantalla) se obtiene feedback del proceso.  
+Un ejemplo de función de grabación, con uso de promises:  
+```javascript
+<script>
+        function grabarListadoFirebase() {
+            var referencia = databaseService.ref('municipios');
+    // escribo en esa referencia
+   referencia.update(lista);
+        // realizo uso de las promesas
+    console.log(lista);
+    referencia.update(lista)
+            .then(function() {
+                console.log('lista almacenada correctamente');
+                document.getElementById("resultado").textContent = "correcto";
+            })
+            .catch(function(error) {
+                console.log('detectado un error', error);
+            });
+    }
+</script>
+```
 
 ## Extraer texto de otra web
 
