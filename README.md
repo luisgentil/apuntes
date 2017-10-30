@@ -12,6 +12,7 @@ Orden inverso (lo más reciente arriba)
 - [Extraer texto de otra web](#extraer-texto-de-otra-web)  
 - [Mostrar imágenes de otra web](#mostrar-imágenes-de-otra-web)  
 - [Mostrar parte de una imagen](#mostrar-parte-de-una-imagen)   
+- [Añadir plugin en PhoneGap](#añadir-plugin-en-phonegap)  
 
 ## Llamada a una función, con parámetros  
 FUNCIONA  
