@@ -161,3 +161,9 @@ Se usa el elemento <canvas>, elemento HTML que permite dibujar en él. Se "dibuj
 	ctx.drawImage(img, -520,-145);  
 <canvas id="myCanvas" width="200" height="120" style="border:1px solid #000000"; onload='myFunction()'></canvas>   
 ```  
+
+## Añadir plugin en PhoneGap
+No todos los módulos están disponibles en Phonegap Desktop, básicamente están disponibles los típicos: cámara, mensajes, etc. Los que no están en ese listado típico (ver [link-pendiente]) hay que añadirlos aparte.  
+Hay dos formas, que yo sepa, de hacer esto:  
+- subir los archivos y tal, cosa que no sé hacer porque no uso CLI;  
+- referenciar al repositorio npm: hay que insertar el plugin en el xml, y los ficheros js en el el js.  
