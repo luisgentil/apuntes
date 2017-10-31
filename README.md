@@ -167,4 +167,16 @@ Se usa el elemento <canvas>, elemento HTML que permite dibujar en él. Se "dibuj
 No todos los módulos están disponibles en Phonegap Desktop, básicamente están disponibles los típicos: cámara, mensajes, etc. Los que no están en ese listado típico (ver [link-pendiente]) hay que añadirlos aparte.  
 Hay dos formas, que yo sepa, de hacer esto:  
 - subir los archivos y tal, cosa que no sé hacer porque no uso CLI;  
-- referenciar al repositorio npm: hay que insertar el plugin en el xml, y los ficheros js en el el js.  
+- referenciar al repositorio npm: hay que insertar el plugin en el xml, con su nombre correcto.  
+De esta forma, sin tener los ficheros del plugin, puedes usar su funcionalidad.
+Cuando funciona es una pasada.
+En este mismo repositorio de Github he creado un ejemplo llamado "Chat example". Se trata de uno de los ejemplos de Don. He seguido las indicaciones (me costó), y ayer funcionó. Lo que hice:  
+- fork del repositorio completo  
+- copié el ejemplo en una nueva carpeta (un nuevo proyecto de git)  
+- creé una nueva app en Phonegap Build, con referencia al GitHub de la nueva carpeta,  
+- modifiqué el xml, y añadí la referencia al plugin (me costó encontrar el nombre correcto)  
+- empaqueté la app, 
+- con el Bluetooth activo, y habiendo emparejado con el Arduino, abrí la app,  
+- aparece la lista de dispositivos emparejados, y consiguió conectar con el Arduino Zum 328.  
+En el arduino tenía cargado un script sencillo, preparado desde DIWO (BQ). Muy simple, un contador que devuelve un número cada vez que recibe cualquier cosa por el puerto serie.  
+Traté de hacer funcionar la app con otro Android y, efectivamente, no funciona.  
