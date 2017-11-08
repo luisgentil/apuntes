@@ -17,5 +17,13 @@ Comienzo usando dos sliders, ya que definir un canvas con dos sprites es muy com
 
 
 ## Versión PhoneGap
+Para usar la cámara, plugin: `camera`.  
+Para conocer la ubicación, incluyendo la orientación respecto al Norte (heading): `geolocation`.  
+*heading: Direction of travel, specified in degrees counting clockwise relative to the true north. (Number)*  
+También: cordova-plugin-device-orientation , PERO: *With the W3C Device Orientation API now being supported on iOS, Android and Windows devices, this plugin is not needed any more*. Y el enlace lleva a: https://www.w3.org/TR/orientation-event/  
+PERO: esa web remite a otra actualizada, que dice: *Tener cuidado. Esta especificación ya no está en mantenimiento activo y el Grupo de trabajo de geolocalización no tiene la intención de mantenerla más.*. Así que usaré **cordova-plugin-device-orientation**.  
+
+La versión más sencilla sería: tras evento device.ready, activar un evento periódico de 10 segundos, que toma una imagen, y después la carga en un canvas, mostrando algunos datos en una ventana de texto: nombre, fecha y hora, ...
+
 
 
