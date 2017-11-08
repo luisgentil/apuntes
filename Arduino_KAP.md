@@ -12,6 +12,9 @@ Otro planteamiento: una app para el smartphone cámara, que ordene los cambios d
 La plataforma AI2 es muy fácil de usar, por lo que es mi primera opción. Uso de base una app anterior, llamada `Vision`, donde ya hay funciones de comunicación vía BT. También, visión para una cámara WiFi.  
 El problema con AI2 es que no es posible programar la toma de fotos, por lo que una app de cámara no es posible, sólo podemos plantear la app para controlador.  
 
+### KAP Control - AI2
+Comienzo usando dos sliders, ya que definir un canvas con dos sprites es muy complejo, de entrada. Ya cambiaré el layout cuando el código de envío e interpretación funcione bien.
+
 
 ## Versión PhoneGap
 
