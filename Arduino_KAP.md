@@ -10,6 +10,14 @@ Otro planteamiento: una app para el smartphone cámara, que ordene los cambios d
 Añado código de lectura de valores desde el ejemplo `ReadASCIIString.ino`  
 Leyendo el ejemplo de `BT_pruebas_L_Llamas`, compruebo que no hace falta especificar nada para usar el BT 
 como puerto serie. Por tanto, con este código debería funcionar sin problemas desde una app de BT.  
+El código: https://create.arduino.cc/editor/luisgentil/ad7266f3-a810-48c3-8393-e8524854f885  
+Nombre: KAP_elaboracion_nov_17  
+Resultado:  
+El 11/11 el sistema funcionó, con el montaje de la foto. Los cambios que introduje: alimentación externa (9V), jumper conectando el GND (junto a la fila de pines digitales) y la tira de GND en la placa protoboard.  
+También modifiqué la codificación de envío de envío de datos, quedando: PAN position . TILT position /  
+La barra inclinada es el carácter que indica final de envío, y por tanto, la señal para que mueva los servos. Es menos equívoco que el salto de línea, que me dio problemas con el BT Serial.  
+
+Problemas previos:  
 El 08/11 hago pruebas, y el sistema se comporta de una manera muy rara. No sé qué pasa, así que voy a ir descartando posibles fallos.  
 · Los servos no descansan, están intentando moverse, como si estuvieran forzados. Probé con el miniservo de BQ, y se movía sin parar (y sin órdenes).  
 · Reviso el código, y no veo nada raro, miro otro ejemplo de cómo controlar dos servos desde Serial y es similar, usa el bucle while, etc. Hace attach en pines 9 y 10. Habría que probarlo en la placa. Ref: https://robologs.net/2015/07/18/tutorial-de-arduino-controlar-dos-servos-por-serial/  
