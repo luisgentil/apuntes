@@ -12,9 +12,9 @@ Leyendo el ejemplo de `BT_pruebas_L_Llamas`, compruebo que no hace falta especif
 como puerto serie. Por tanto, con este código debería funcionar sin problemas desde una app de BT.  
 El código: https://create.arduino.cc/editor/luisgentil/ad7266f3-a810-48c3-8393-e8524854f885  
 Nombre: KAP_elaboracion_nov_17  
-Resultado:  
+*Resultado*:  
 El 11/11 el sistema funcionó, con el montaje de la foto. Los cambios que introduje: alimentación externa (9V), jumper conectando el GND (junto a la fila de pines digitales) y la tira de GND en la placa protoboard.  
-![montaje KAP](https://photos.app.goo.gl/3b7UbN91qNaxwoJl2 "Montaje KAP")  
+![montaje KAP](https://lh3.googleusercontent.com/mcsMUe9dcmr6fU9J-_K0usKp6R774P6nJMmf9-is9XUfNf47tM1rOlNEo3tgJMQ-2_5l23aeo3zMaPGgmV8ZhRp9MohP6anYqFgyj3EV-KAsqXbAu8pLzD3bK8m2qtPxC41SA_YJeGg "Montaje KAP")  
 También modifiqué la codificación de envío de envío de datos, quedando: PAN position . TILT position /  
 La barra inclinada es el carácter que indica final de envío, y por tanto, la señal para que mueva los servos. Es menos equívoco que el salto de línea, que me dio problemas con el BT Serial.  
 
