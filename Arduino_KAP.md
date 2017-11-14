@@ -37,7 +37,9 @@ La plataforma AI2 es muy fácil de usar, por lo que es mi primera opción. Uso d
 El problema con AI2 es que no es posible programar la toma de fotos, por lo que una app de cámara no es posible, sólo podemos plantear la app para controlador.  
 
 ### KAP Control - AI2
-Comienzo usando dos sliders, ya que definir un canvas con dos sprites es muy complejo, de entrada. Ya cambiaré el layout cuando el código de envío e interpretación funcione bien.
+Comienzo usando dos sliders, ya que definir un canvas con dos sprites es muy complejo, de entrada. Ya cambiaré el layout cuando el código de envío e interpretación funcione bien.  
+13/11 las pruebas son correctas, el sistema de envío funciona bien, y el arduino interpreta correctamente.  
+Siguiente paso: seleccionar el ángulo mediante canvas.  
 
 
 ## Versión PhoneGap
