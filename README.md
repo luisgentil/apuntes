@@ -24,7 +24,7 @@ La solución: especificar la sintaxis mediante la expresión funtion(), y entre 
 `var myPause = setInterval(function() {funciónCadaIntervalo(parámetro, otroParámetro)}, milisegundos);`  
 
 ## Tips de sintaxis 'MD' para escribir archivos README.md  
-`https://github.com/jfasebook/SoyInformatico/blob/master/README.md`  
+https://github.com/jfasebook/SoyInformatico/blob/master/README.md  
 
 ## Analizar el código en la consola
 FUNCIONA  
