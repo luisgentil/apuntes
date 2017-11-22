@@ -13,6 +13,7 @@ Orden inverso (lo más reciente arriba)
 - [Mostrar imágenes de otra web](#mostrar-imágenes-de-otra-web)  
 - [Mostrar parte de una imagen](#mostrar-parte-de-una-imagen)   
 - [Añadir plugin en PhoneGap](#añadir-plugin-en-phonegap)  
+- [CSS básico](#css-básico)
 
 ## Llamada a una función, con parámetros  
 FUNCIONA  
@@ -180,3 +181,11 @@ En este mismo repositorio de Github he creado un ejemplo llamado "Chat example".
 - aparece la lista de dispositivos emparejados, y consiguió conectar con el Arduino Zum 328.  
 En el arduino tenía cargado un script sencillo, preparado desde DIWO (BQ). Muy simple, un contador que devuelve un número cada vez que recibe cualquier cosa por el puerto serie.  
 Traté de hacer funcionar la app con otro Android y, efectivamente, no funciona.  
+
+## CSS básico
+A ver si resumo un poco lo que he estudiado en estos días en http://progate.com/html/study/1/1  
+Básico: usar una buena plantilla, he creado una llamada "6 cuadros", adaptada a lo que me gusta.  
+También las hay en CSS W3School, https://www.w3schools.com/css/css_templates.asp  
+Básico-básico: usar clases, SIEMPRE. Una clase por cada elemento que se quiera diferenciar.  
+Display block, float left.  
+
