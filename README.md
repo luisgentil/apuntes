@@ -189,3 +189,7 @@ También las hay en CSS W3School, https://www.w3schools.com/css/css_templates.as
 Básico-básico: usar clases, SIEMPRE. Una clase por cada elemento que se quiera diferenciar.  
 Display block, float left.  
 
+### Transparencia: opacity y rgba
+rgba is used when you want to specify the transparency of the color. You specify four values for rgba, and the fourth value specifies the transparency from 0.0 to 1.0, 0.0 being the most transparent.  
+Con opacity, todo el elemento se hace transparente (texto también).  
+
