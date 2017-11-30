@@ -61,6 +61,7 @@ En la web http://jsoneditoronline.org/ se puede visualizar fácilmente el conten
 
 ## FireBase, lo básico
 Firebase es muchas cosas, pero yo me quedo con **_"una base de datos online"_**.  
+(información Firebase-AppInventor 2 en [AI2](apuntes/App Inventor_2.md)   
 Hay mucha información y ejemplos acerca de cómo grabar datos, y poco sobre cómo leerlos (en mi ignorancia). La fuente de información más práctica que he encontrado: `https://desarrolloweb.com/articulos/introduccion-firebase-backend-nube.html`.  
 Por lo que he entendido: no hay que leer, sino **suscribirse** a los cambios del valor. Es decir, podemos tener actualizados los datos mediante la conexión que hace (y mantiene) Firebase. Así que para leer, con el valor inicial es suficiente.  
 El código de búsqueda / lectura:  
