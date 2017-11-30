@@ -14,7 +14,8 @@ Así que las **conclusiones** a las que llego son:
 - Es posible usar Firebase desde AI2,  
 - se puede alimentar una base con datos desde la consola, importando datos, o añadiéndolos,  
 - la estructura de datos hay que pensarla bien, antes de generalizar a una app de coro (o similar), donde (supuestamente) tendríamos varias colecciones de datos y muchos usuarios accediendo a las distintas colecciones.  
-Bloques: ![Bloques Firebase en App Inventor 2](imagenes/prueba-firebase-AI2-blocks.png)
+Bloques: ![Bloques Firebase en App Inventor 2](imagenes/prueba-firebase-AI2-blocks.png)  
+
 Estructura de Firebase: ![datos del ejemplo en Firebase](imagenes/prueba-firebase-AI2-services-y-datos.png)  
 
 Fuentes de información para configurar (a ver si consigo que arranque y escribo cómo hacerlo).
