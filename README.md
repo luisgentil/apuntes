@@ -14,6 +14,7 @@ Orden inverso (lo más reciente arriba)
 - [Mostrar parte de una imagen](#mostrar-parte-de-una-imagen)   
 - [Añadir plugin en PhoneGap](#añadir-plugin-en-phonegap)  
 - [CSS básico](#css-básico)
+- [Hammer.js, detección de eventos](#hammerjs)
 
 ## Llamada a una función, con parámetros  
 FUNCIONA  
@@ -30,7 +31,6 @@ https://github.com/jfasebook/SoyInformatico/blob/master/README.md
 ## Analizar el código en la consola
 FUNCIONA  
 `console.log(lo que quieras ver en la consola)`  
-
 
 ## JSON, lo básico
 JSON es una forma de compartir datos entre el cliente y el servidor.  
@@ -193,4 +193,22 @@ Display block, float left.
 ### Transparencia: opacity y rgba
 rgba is used when you want to specify the transparency of the color. You specify four values for rgba, and the fourth value specifies the transparency from 0.0 to 1.0, 0.0 being the most transparent.  
 Con opacity, todo el elemento se hace transparente (texto también).  
+--pendiente--
 
+## Hammer.js
+Un -- para detectar eventos, tanto en PC como en pantallas táctiles, muy práctico.  
+En html: 
+```
+<script src="https://hammerjs.github.io/dist/hammer.js"></script>
+```  
+En js:
+```
+var myElement = document.getElementById('myElement');
+// create a simple instance
+// by default, it only adds horizontal recognizers
+var mc = new Hammer(myElement);
+// listen to events...
+mc.on("panleft panright tap press", function(ev) {otraFunction(ev);}); 
+```  
+Por defecto, escucha los eventos pan, tap, press.  
+Hay que definir la función de éxito, y funciones para cada dirección.  
