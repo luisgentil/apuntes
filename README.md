@@ -196,7 +196,7 @@ Con opacity, todo el elemento se hace transparente (texto también).
 --pendiente--
 
 ## Hammer.js
-Un -- para detectar eventos, tanto en PC como en pantallas táctiles, muy práctico.  
+Una librería para detectar eventos, tanto en PC como en pantallas táctiles, muy práctico.  
 En html: 
 ```
 <script src="https://hammerjs.github.io/dist/hammer.js"></script>
