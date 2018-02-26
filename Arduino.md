@@ -1,6 +1,9 @@
 # Arduino
 Mis apuntes de **Arduino**.  
 Básicamente, los proyectos relacionados con KAP (*kite aerial photography*), planteados hasta el momento.  
+_____
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#arduino)** ______________________________
+_____
 
 *Documentando*
 ### App para controlar un dispositivo pan-tilt para KAP, basado en Arduino y vía BT
@@ -55,6 +58,8 @@ También: cordova-plugin-device-orientation , PERO: *With the W3C Device Orienta
 PERO: esa web remite a otra actualizada, que dice: *Tener cuidado. Esta especificación ya no está en mantenimiento activo y el Grupo de trabajo de geolocalización no tiene la intención de mantenerla más.*. Así que usaré **cordova-plugin-device-orientation**.  
 
 La versión más sencilla sería: tras evento device.ready, activar un evento periódico de 10 segundos, que toma una imagen, y después la carga en un canvas, mostrando algunos datos en una ventana de texto: nombre, fecha y hora, ...
-
+_____
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#arduino)** ______________________________
+_____
 
 
