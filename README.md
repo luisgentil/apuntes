@@ -8,12 +8,12 @@ En general, las reglas que me aplico son:
 -Orden inverso (lo más reciente arriba)  
 
 
-### Html, CSS y Javascript:   
-### AppInventor2 (MIT):   apuntes/App_Inventor_2.md
-### Python:  
-### OpenCV:  
-### Phonegap:  
-### Arduino:  
+### [Html, CSS y Javascript](https://github.com/luisgentil/apuntes/blob/master/Html-CSS-Javascript)
+### [AppInventor2 (MIT)](https://github.com/luisgentil/apuntes/blob/master/App_Inventor_2)
+### [Python](https://github.com/luisgentil/apuntes/blob/master/Python)  
+### [OpenCV](https://github.com/luisgentil/apuntes/blob/master/OpenCV)  
+### [Phonegap](https://github.com/luisgentil/apuntes/blob/master/Phonegap)  
+### [Arduino](https://github.com/luisgentil/apuntes/blob/master/Arduino)  
 
 
 ## Índice
