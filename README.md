@@ -8,12 +8,12 @@ En general, las reglas que me aplico son:
 -Orden inverso (lo más reciente arriba)  
 
 
-### [Html, CSS y Javascript](https://github.com/luisgentil/apuntes/blob/master/Html-CSS-Javascript)
-### [AppInventor2 (MIT)](https://github.com/luisgentil/apuntes/blob/master/App_Inventor_2)
-### [Python](https://github.com/luisgentil/apuntes/blob/master/Python)  
-### [OpenCV](https://github.com/luisgentil/apuntes/blob/master/OpenCV)  
-### [Phonegap](https://github.com/luisgentil/apuntes/blob/master/Phonegap)  
-### [Arduino](https://github.com/luisgentil/apuntes/blob/master/Arduino)  
+### [Html, CSS y Javascript](https://github.com/luisgentil/apuntes/blob/master/Html-CSS-Javascript.md)
+### [AppInventor2 (MIT)](https://github.com/luisgentil/apuntes/blob/master/App_Inventor_2.md)
+### [Python](https://github.com/luisgentil/apuntes/blob/master/Python.md)  
+### [OpenCV](https://github.com/luisgentil/apuntes/blob/master/OpenCV.md)  
+### [Phonegap](https://github.com/luisgentil/apuntes/blob/master/Phonegap.md)  
+### [Arduino](https://github.com/luisgentil/apuntes/blob/master/Arduino.md)  
 
 
 ## Índice
