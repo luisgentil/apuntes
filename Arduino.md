@@ -2,7 +2,7 @@
 Mis apuntes de **Arduino**.  
 Básicamente, los proyectos relacionados con KAP (*kite aerial photography*), planteados hasta el momento.  
 _____
-___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#arduino)** ______________________________
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _____________________________________________
 _____
 
 *Documentando*
