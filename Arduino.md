@@ -1,3 +1,7 @@
+# Arduino
+Mis apuntes de **Arduino**.  
+Básicamente, los proyectos relacionados con KAP (*kite aerial photography*), planteados hasta el momento.  
+
 *Documentando*
 ### App para controlar un dispositivo pan-tilt para KAP, basado en Arduino y vía BT
 Necesitamos un código arduino para controlar la placa, con dos servos que mueven un sistema Pan-Tilt.  
