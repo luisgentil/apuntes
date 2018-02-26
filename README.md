@@ -9,10 +9,11 @@ En general, las reglas que me aplico son:
 
 
 ### Html, CSS y Javascript:   
-### MIT AppInventor2:  
+### AppInventor2 (MIT):   apuntes/App_Inventor_2.md
 ### Python:  
 ### OpenCV:  
 ### Phonegap:  
+### Arduino:  
 
 
 ## Índice
