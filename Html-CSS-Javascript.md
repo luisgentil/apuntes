@@ -1,5 +1,8 @@
 # HTML, CSS, Javascript
 
+Mis apuntes de HTML, CSS, Javascript.  
+
+
 ## Índice
 - [Tips de sintaxis MD para escribir archivos README.md](#tips-de-sintaxis-md-para-escribir-archivos-readmemd)  
 - [Llamada a una función, con parámetros](#llamada-a-una-función-con-parámetros)  
@@ -12,6 +15,10 @@
 - [Añadir plugin en PhoneGap](#añadir-plugin-en-phonegap)  
 - [CSS básico](#css-básico)
 - [Hammer.js, detección de eventos](#hammerjs)
+
+_____
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** ______________________________________________
+_____
 
 ## Llamada a una función, con parámetros  
 FUNCIONA  
@@ -209,3 +216,8 @@ mc.on("panleft panright tap press", function(ev) {otraFunction(ev);});
 ```  
 Por defecto, escucha los eventos pan, tap, press.  
 Hay que definir la función de éxito, y funciones para cada dirección.  
+
+
+_____
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#html-css-javascript)** ______________________________
+_____
