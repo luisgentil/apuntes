@@ -32,6 +32,8 @@ La solución: especificar la sintaxis mediante la expresión funtion(), y entre 
 ## Tips de sintaxis 'MD' para escribir archivos README.md  
 https://github.com/jfasebook/SoyInformatico/blob/master/README.md  
 
+No obstante, el tema de los anchors no siempre me funciona como dice ese documento (o al menos, no en Jupyter Notebook). En esos casos, sí funciona cuando el título sólo contiene minúsculas y caracteres ASCII.  
+
 ## Analizar el código en la consola
 FUNCIONA  
 `console.log(lo que quieras ver en la consola)`  
