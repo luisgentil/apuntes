@@ -13,6 +13,7 @@ En general, las reglas que me aplico son:
 ### [AppInventor2 (MIT)](https://github.com/luisgentil/apuntes/blob/master/App_Inventor_2.md)
 ### [Python](https://github.com/luisgentil/apuntes/blob/master/Python.md)  
 ### [OpenCV](https://github.com/luisgentil/apuntes/blob/master/OpenCV.md)  
+### [Tracking.js](https://github.com/luisgentil/apuntes/blob/master/Trackingjs.md)  
 ### [Phonegap](https://github.com/luisgentil/apuntes/blob/master/Phonegap.md)  
 ### [Arduino](https://github.com/luisgentil/apuntes/blob/master/Arduino.md)  
 
