@@ -15,7 +15,7 @@ Mis apuntes de HTML, CSS, Javascript.
 - [Añadir plugin en PhoneGap](#añadir-plugin-en-phonegap)  
 - [CSS básico](#css-básico)
 - [Hammer.js, detección de eventos](#hammerjs)
-
+- [Herramienta 'apktool' para ver el android.manifest](#herramienta-apktool-para-ver-el-androidmanifest)
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** ______________________________________________
 _____
@@ -218,6 +218,9 @@ mc.on("panleft panright tap press", function(ev) {otraFunction(ev);});
 ```  
 Por defecto, escucha los eventos pan, tap, press.  
 Hay que definir la función de éxito, y funciones para cada dirección.  
+
+## Herramienta 'apktool' para ver el android.manifest  
+Ver en los apuntes de Phonegap, [#herramienta apktool](https://github.com/luisgentil/apuntes/blob/master/Phonegap.md#herramienta-apktool).  
 
 
 _____
