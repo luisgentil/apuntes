@@ -11,4 +11,5 @@ Funciona, teniendo en cuenta que:
 - hay que usar las rutas completas,  
 - hay que crear un directorio para almacenar los archivos del framework,  
 - y hay que especificar una carpeta para que guarde los ficheros resultantes, carpeta que no debe existir o bien especificar -f para que sobreescriba.  
-![instrucciones_apktool.jpg](attachment:imagenes/instrucciones_apktool.jpg)  
+![instrucciones_apktool.jpg](imagenes/instrucciones_apktool.jpg)  
+
