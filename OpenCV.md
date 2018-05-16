@@ -24,13 +24,16 @@ https://pythonprogramming.net/haar-cascade-object-detection-python-opencv-tutori
 
 **Naotoshi Seo**: http://note.sonots.com/SciSoftware/haartraining.html , realmente es la base de casi todos los tutoriales que acabo viendo).  
 
-**Tutorial Robin**: http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html, nueva referencia, muy muy step-by-step.  
+**Tutorial Robin**: http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html, nueva referencia, muy muy step-by-step. También tiene una lista paso-a-paso, en Github: https://github.com/mrnugget/opencv-haar-classifier-training .   
 
 **Docs de OpenCV**: Referencias básicas, _Face Detection using Haar Cascades_ (OpenCV 3.0.0-dev documentation » OpenCV-Python Tutorials » Object Detection » Face Detection using Haar Cascades, 
 https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html#face-detection);  
-Cascade Classifier Training
+Cascade Classifier Training.  
 OpenCV 2.4.13.6 documentation » OpenCV User Guide » Cascade Classifier Training
-https://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html
+https://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html  
+
+**"Training cascade files"** de Jeff Thompson: https://github.com/jeffThompson/MirrorTest/blob/master/TrainingInstructions.md . Me parece muy interesante, porque es una guía paso-a-paso, muy clara ahora que ya conozco el tema y he leído bastante material.  
+
 
 #### Colecciones de Archivos cascades.xml 
 Hay una web con una recopilación de Haar Cascades, http://alereimondo.no-ip.org/OpenCV/34  
@@ -38,4 +41,232 @@ Aunque, básicamente, se pueden encontrar Haar Cascades.xml aquí:  https://gith
 Aquí también hay varios ficheros xml:  https://github.com/opencv/opencv_extra/tree/master/testdata/cv/dpm/VOC2007_Cascade  
 
 
+## Create_samples
+OpenCV suministra dos funciones para entrenar tu propia cascade, create_samples, y training_cascade, que corresponden a las dos etapas principales del proceso: creación de muestras y entranamiento.   
+_Create_samples_ puede utilizarse de varias formas, obteniendo distintos resultados. A veces son equivalentes, otras no. Ejemplo: podemos crear una Cascade desde muestras en formato jpg y un fichero de anotaciones, o desde muestras en png y un fichero que referencia una lista de ficheros, cada uno con sus anotaciones; ambas válidas, ambas creadas desde _create_samples_. Además, con la misma herramienta, y en todos los casos, hay que generar un fichero .vec, que es el que realmente serivrá para entrenar la cascade.  
+Todo eso se especifica con las diferentes _flags_, según se especifiquen o no.  
 
+En resumen, __opencv_createsamples es una herramienta que realiza tres tareas__, según los parámetros que se especifiquen al ejecutarla:
+1. __Crear un conjunto de imágenes positivas__, a partir de una única imagen del objeto y un conjunto de imágenes negativas.
+En ese caso, puede generar tres situaciones:
+- generar un fichero .vec como único resultado;
+- generar un conjunto de imágenes JPG y un fichero .txt con la lista de ficheros de las imágenes;   
+>*To obtain such behaviour the -img, -bg and -info keys should be specified.* 
+En este caso, se generan las imágenes en PNG en el directorio 'info', junto a un fichero [name].lst, que contiene la información de los objetos incrustados, en este formato: 0001_0056_0028_0033_0033.jpg 1 56 28 33 33   
+- generar un conjunto de imágenes PNG y un fichero .txt con la lista de ficheros y anotaciones.
+>*To obtain such behaviour the -img, -bg, -info and -pngoutput keys should be specified.*
+Hay que añadir el flag -pngoutput especificando el directorio donde se guardarán las imágenes.  
+No obstante, creo que, si se añade también el flag -vec, no genera los png (o eso me ha pasado).  
+
+2. __Convertir la colección de imágenes positivas, con sus anotaciones, en un fichero \*.vec.__
+>*In order to create positive samples from such collection, -info argument should be specified instead of -img: -info \collection_file_name\  *
+
+Después de crear un conjunto de imágenes positivas (ya sea con createsamples, o bien, porque tienes un montón de imágenes del objeto de tu interés), hay que generar el fichero vec correspondiente, a partir de las anotaciones (ya sean creadas por create samples {tanto desde las png como desde JPG y el correspondiente \[name].lst}, ya sean creadas anotando los objetos de todas tus imágenes manualmente o con la herramienta 'opencv_annotation.exe'{nota}).
+>*Note that for training, it does not matter how vec-files with positive samples are generated. But opencv_createsamples utility is the only one way to collect/create a vector file of positive samples, provided by OpenCV.*
+
+{nota} Para usar la herramienta 'opencv_annotation.exe', hay que especificar -images \ [example - /data/testimages/], -annotations \ [example - /data/annotations.txt], TIP: Use absolute paths to avoid any problems with the software!
+
+3. __Mostrar el contenido del fichero \*.vec __.
+>*In order to do this only -vec, -w and -h parameters should be specified.*  
+Sólo con esos tres parámetros, la herramienta muestra las imágenes.
+
+CONCLUSION: En cierto modo, hace falta aplicar la herramienta varias veces, en distintos modos, para preparar el conjunto de muestras positivas. Más tarde, entrenar el detector con la segunda herramienta (opencv_traincascade, la nueva versión, o bien opencv_haartraining, la antigua).  
+
+## Paso a paso
+1. Requirements
+N/A  
+2. Installing OpenCV.  
+3. Gathering positive images  
+Hay dos opciones: 
+  - obtener muchas imágenes del objeto/s de interés: para al punto 6.  
+  - generar muchas imágenes con UN objeto y opencv_createsamples.  
+>*We're ready to create some positive samples now, based on the watch5050.jpg image. To do this, run the following via the terminal, while in the workspace:  
+opencv_createsamples -img watch5050.jpg -bg bg.txt -info info/info.lst -pngoutput info -maxxangle 0.5 -maxyangle 0.5 -maxzangle 0.5 -num 1950  
+What this does is creates samples, based on the **img** we specifiy, **bg** is the background information, **info** where we will put the info.list output (which is a lot like the bg.txt file), then the **-pngoutput** is wherever we want to place the newly generated images. Finally, we have some optional parameters to make our original image a bit more dynamic and then **-num** for the number of samples we want to try to create. Great, let's run that.  
+Now you should have ~2,000 images in your info directory, and a file called info.lst. This file is your "positives" file basically. Open that up and peak at how it looks:  
+0001_0014_0045_0028_0028.jpg 1 14 45 28 28  
+First you have the file name, then you have how many of your objects is in the image, followed by all of their locations. We just have one, so it is the x, y, width, and height of the rectangle for the object within the image*.  
+4. Crop and clean up  
+Tamaño: *Anything between 640x480 and 1920x1080 seems to work just fine, and is well under the 1MB max size.*  
+Siempre la misma relación de aspecto.  
+Color: en principio, *convert them to grayscale*.  
+Creo que en la carpeta de OpenCV hay una herramienta que ayuda a seleccionar el bounding box o ROI, para los casos en que se empleen muchas imágenes del objeto.  
+5. "No black pixels", remove background  
+Optional.  
+6. Creating a collection file  
+Es necesario un archivo de texto, que liste todas las imágenes positivas, especificando la ubicación y tamaño del objeto en cada imagen.  
+También hay que obtener un archivo .vec, que combina todas las imágenes positivas. Esto se hace, también, con createsamples.  
+>*Now that we have positive images, we now need to create the vector file, which is basically where we stitch all of our positive images together. We will actually be using opencv_createsamples again for this!  
+opencv_createsamples -info info/info.lst -num 1950 -w 20 -h 20 -vec positives.vec  
+That's our vector file. *  
+Según Thompson:  
+*opencv_createsamples -info collection.txt -bg negativeImages.txt -vec positiveVectorFile.vec -num numBoundingBoxes -w 32 -h 24*  
+7. Gathering negative images  
+Una colección de ficheros sin el objeto, pero de cualquier tamaño mayor del objeto a detectar.  
+También, una lista de los ficheros, como bg.txt .   
+8. Automated training  
+*opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 1800 -numNeg 900 -numStages 10 -w 20 -h 20*  
+9. Test the results  
+ver Naotoshi  
+
+## Errores y soluciones
+Recapitulando: los dos errores se han resuelto....  
+- asegurando que se usan los mismos valores -w y -h tanto al generar los positivos como al entrenar el detector;  
+- para create samples, la ruta es relativa, un directorio por debajo de la carpeta de proyecto;  
+- para train cascade, la ruta debe ser completa: cuando la ruta de los negativos era completa en la lista de bg.txt;  
+- Out of memory: cerrar aplicaciones, usar un procesador de 64 bits, que gestiona más memoria que el de 32.  
+
+## Train_cascade 
+Comienzo a leer sobre haar cascade training parameters, en http://answers.opencv.org/question/39160/opencv_traincascade-parameters-explanation-image-sizes-etc/
+>*Keep in mind that **increase the number of positives will increase the generalization of your model**, it will look for better general features and will less likely overfit on your training data. **Increasing the number of negative images is needed to remove the large amount of false positive detections**. You want to supply as many situations as possible that don't look like your object here! Generally speaking they supply thousand of samples here to try to model general background noise for your application. Always keep in mind to carefully select your training data. It is better to 100 good natural occuring samples, than to use 1 good image and transform it 100 times with the available tools.*   
+
+Un tutorial muy detallado, que comenta los parámetros de entrenamiento: https://github.com/robotics0001/FTC-Team-Level-Up-9261-Cascade-Classifier-Tutorial/wiki/Step-3:-Training  
+>*Readjusting Parameters
+Sometimes, when you test the cascade, it will either give you too many false positives or too many false negatives. **To deal with the issue of false negatives, you can either feed it more positive training data, or you can retrain it with a reduced number of negatives per stage**. To solve the problem of false negatives, you can captures each false negative image and retrain the cascade using those false positives as some of your background pictures (see notes about taking pictures with OpenCV on the FTC app).*  
+
+Explicación de los parámetros de train_cascade, y entrenando una car cascade, por el indio Kumar: https://abhishek4273.com/2014/03/16/traincascade-and-car-detection-using-opencv/  
+
+Otra interesante referencia: "Analysis and optimization of parameters used in training a cascade classifier", http://scholarpublishing.org/index.php/AIVP/article/view/1152.   
+
+### Numero de Etapas
+>*Now how to define how much stages you need? Start by adding for example 25 stages, and see how the returned acceptanceRatio is small enough. I usually suggest until it goes below 10^-5. After that you are overfitting the actual model from my experience.*  
+
+### Ejemplo completo
+Voy a probar a crear una nueva cascade con el móvil, para comprobar la influencia del tamaño de imagen de las muestras. También, para usar varias originales, hechas por mí.  
+Puedo hacer dos pruebas, con las mismas imágenes positivas, adaptadas a los tamaños de las imágenes de fondo.  
+Creo una carpeta nueva, llamada HaarBQ.    
+Hago tres fotos del viejo BQ, genero 150 muestras a partir de cada una de ellas, verifico los números en haar-calculos.ods, y recorto el tamaño para cada una de las dos pruebas, adaptando a ambos tamaños.  
+Recorto el BQ en las tres fotos.  
+Paso a BN. En Fotografix, elimino lo correspondiente al fondo. Como es jpg, al grabar lo rellena de color (rojo, 240). Lo usaré como -bg transparente.  
+Copio las fotos de Background a pruebaBG\background.  
+Desde "Folder to TXT" genero la lista de los ficheros.    
+Abro el txt, borro todo lo que no es rutas de ficheros (primeras y últimas), selecciono todo y copio.  
+Pego en una hoja de LibreOffice-Calc, añado "background\" a todas las rutas mediante la función CONCATENAR, copio-y-pego en el txt, y lo grabo como "background_simple.txt".  
+En Calc, añado la ruta absoluta a todas las rutas, copio-y-pego en txt, y lo grabo como "background_absolute.txt".  
+Reduzco el tamaño de las fotos de los objetos, porque salta un error y son muy grandes.  
+Las reduzco a la mitad, 550 x 950 aprox., renombrando a foto11, foto22, foto33.  
+Para cada foto 1, 2, 3, ejecuto:  
+>*{rutaPC}\Programas\PortableApps\PortableApps\opencv-2-4-31\build\x86\vc14\bin\opencv_createsamples -img {ruta}\my_apps\OpenCV\HaarBQ\ __foto11__.jpg -bg {ruta}\my_apps\OpenCV\HaarBQ\pruebaBG\background_simple.txt -info {ruta}\my_apps\OpenCV\HaarBQ\pruebaBG\info\ __info1__.lst -bgcolor 240 -maxxangle 0.5 -maxyangle 0.5 -maxzangle 0.5 -num 150 -w 16 -h 32   * 
+
+Ojo con el valor de info.lst, para no machacarlo sucesivamente.  
+
+Reuno todos los .lst en info.lst: abro los tres, copio-y-pego, renombro.    
+Ahora el -vec:  
+
+>*{rutaPC}\Programas\PortableApps\PortableApps\opencv-2-4-31\build\x86\vc14\bin\opencv_createsamples -info {ruta}\my_apps\OpenCV\HaarBQ\pruebaBG\info\info.lst -num 600 -vec {ruta}\my_apps\OpenCV\HaarBQ\pruebaBG\positives.vec -w 16 -h 32 *  
+
+Aunque le pido 600 muestras, crea un vec con 450, según informa como mensaje después de ejecutarlo. Lógico, sólo había 150 x 3 = 450.  
+Ahora, train_cascade.  
+>*{rutaPC}\Programas\PortableApps\PortableApps\opencv-2-4-31\build\x86\vc14\bin\opencv_traincascade -data {ruta}\my_apps\OpenCV\HaarBQ\pruebaBG\data -vec {ruta}\my_apps\OpenCV\HaarBQ\pruebaBG\positives.vec -bg {ruta}\my_apps\OpenCV\HaarBQ\pruebaBG\background_absolute.txt -numPos 300 -numNeg 300 -numStages 10 -w 16 -h 32 *  
+
+El último valor de acceptanceratio es 0.00095, así que amplío a 14 stages, quedando 8.2E-5.  El resultado es un fichero cascade.xml, en la carpeta Data.  
+
+
+### Código para hacer pruebas
+Código python para probar la cascade con varias fotografías:  
+```python
+# modificado, procedente de: https://pythonprogramming.net/haar-cascade-object-detection-python-opencv-tutorial/
+
+import numpy as np
+import cv2
+
+ruta = "{tu-ruta}\OpenCV-Python\opencv-python-master\examples\haarcascade\\"
+
+face_cascade = cv2.CascadeClassifier(ruta + 'haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier(ruta + 'haarcascade_eye.xml')
+
+#this is the cascade we just made. Call what you want
+#watch_cascade = cv2.CascadeClassifier("{ruta}\my_apps\OpenCV\cars\BuildingHaar\cascades\cascade-200-200-15.xml")
+watch_cascade = cv2.CascadeClassifier("{ruta}\my_apps\OpenCV\HaarBQ\cascades\cascade-NEG-300-300-25.xml")
+
+collection = [
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_1.jpg",
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_2.jpg",
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_3.png",
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_4.jpg",
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_5.jpg",
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_6.jpg",
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_7.jpg",
+"{ruta}\my_apps\OpenCV\HaarBQ\\test\IMG_8.jpg"
+]
+
+for element in collection: 
+    img = cv2.imread(element)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+    # add this
+    # image, reject levels, level weights.
+    watches = watch_cascade.detectMultiScale(gray,2,1) # 50, 50)#
+    print watches
+
+    # add this
+    for (x,y,w,h) in watches:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+
+    for (x,y,w,h) in faces:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+        roi_gray = gray[y:y+h, x:x+w]
+        roi_color = img[y:y+h, x:x+w]
+        eyes = eye_cascade.detectMultiScale(roi_gray)
+        for (ex,ey,ew,eh) in eyes:
+            cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,128,0),2)
+    
+    cv2.imshow('img'+element, img)
+
+    k = cv2.waitKey() & 0xff
+
+    cv2.destroyAllWindows()
+
+```
+Código para probar con la webcam:  
+```python
+import numpy as np
+import cv2
+
+ruta = "{tu-ruta}\OpenCV-Python\opencv-python-master\examples\haarcascade\\"
+
+face_cascade = cv2.CascadeClassifier(ruta + 'haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier(ruta + 'haarcascade_eye.xml')
+
+#this is the cascade we just made. Call what you want
+watch_cascade = cv2.CascadeClassifier("{ruta}\my_apps\OpenCV\HaarBQ\cascades\cascade-BG-300-300-16.xml")
+
+cap = cv2.VideoCapture(0)
+
+while 1:
+    ret, img = cap.read()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    
+    # add this
+    # image, reject levels, level weights.
+    watches = watch_cascade.detectMultiScale(gray, 1.3, 1)
+    
+    # add this
+    for (x,y,w,h) in watches:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(255,255,0),2)
+
+    for (x,y,w,h) in faces:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+
+        
+        roi_gray = gray[y:y+h, x:x+w]
+        roi_color = img[y:y+h, x:x+w]
+        eyes = eye_cascade.detectMultiScale(roi_gray)
+        for (ex,ey,ew,eh) in eyes:
+            cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+
+    cv2.imshow('img',img)
+    k = cv2.waitKey(30) & 0xff
+    if k == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
+_____
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#html-css-javascript)** ______________________________
+_____
