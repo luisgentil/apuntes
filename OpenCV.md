@@ -2,6 +2,21 @@
 
 Durante unos meses estuve estudiando este software de visión artificial, visión por ordenador, etc. Fui recopilando información, código en Python, etc, y este es mi resumen.  
 
+## Indice
+- [Información básica](#informacion-basica)  
+- [Entrenando una Custom Haar Cascade](#entrenando-una-custom-haar-cascade)  
+  - [Referencias y tutoriales](#referencias-y-tutoriales) 
+  - [Colecciones de Archivos cascades.xml](#colecciones-de-archivos-cascadesxml)  
+  - [Create_samples](#create_samples)  
+  - [Paso a paso](#paso-a-paso)  
+  - [## Errores y soluciones](###errores-y-soluciones)  
+  - [Train_cascade](#train_cascade)  
+  - [Numero de Etapas](#numero-de-etapas)  
+  - [Ejemplo completo](#ejemplo-completo)  
+  - [Código para hacer pruebas](#codigo-para-hacer-pruebas)
+  
+  - [](#)  - [](#)  
+
 ### Información básica  
 **Guía de OpenCV y Python**: En www.programarfacil.org  "INTRODUCCIÓN A LA VISIÓN ARTIFICIAL CON OPENCV Y PYTHON", de Luis del Valle. Es muy básica, pero para comenzar me ha servido.  
 
@@ -14,9 +29,9 @@ No es sencillo, pero sí completo.
 
 
 
-### Entrenando una Custom Haar Cascade  
+## Entrenando una Custom Haar Cascade  
 
-#### Referencias y tutoriales 
+### Referencias y tutoriales 
 **Mememememe**: una introducción muy completita sobre el entrenamiento de Cascades: Tiene un tuturial real, práctico, sobre cómo generar Haar Cascades con Android: https://memememememememe.me/post/training-haar-cascades/ , y otros recursos https://memememememememe.me/resources/  
 
 **Tutorial Harrison**: Referencia útil para crear tu propia Haar Cascade usando Python: 
@@ -35,7 +50,7 @@ https://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html
 **"Training cascade files"** de Jeff Thompson: https://github.com/jeffThompson/MirrorTest/blob/master/TrainingInstructions.md . Me parece muy interesante, porque es una guía paso-a-paso, muy clara ahora que ya conozco el tema y he leído bastante material.  
 
 
-#### Colecciones de Archivos cascades.xml 
+### Colecciones de Archivos cascades.xml 
 Hay una web con una recopilación de Haar Cascades, http://alereimondo.no-ip.org/OpenCV/34  
 Aunque, básicamente, se pueden encontrar Haar Cascades.xml aquí:  https://github.com/opencv/opencv/tree/master/data/haarcascades  
 Aquí también hay varios ficheros xml:  https://github.com/opencv/opencv_extra/tree/master/testdata/cv/dpm/VOC2007_Cascade  
