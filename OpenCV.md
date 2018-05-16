@@ -3,13 +3,13 @@
 Durante unos meses estuve estudiando este software de visión artificial, visión por ordenador, etc. Fui recopilando información, código en Python, etc, y este es mi resumen.  
 
 ## Indice
-- [Información básica](#informacion-basica)  
+- [Información básica](#información-basica)  
 - [Entrenando una Custom Haar Cascade](#entrenando-una-custom-haar-cascade)  
   - [Referencias y tutoriales](#referencias-y-tutoriales) 
   - [Colecciones de Archivos cascades.xml](#colecciones-de-archivos-cascadesxml)  
   - [Create_samples](#create_samples)  
   - [Paso a paso](#paso-a-paso)  
-  - [## Errores y soluciones](#errores-y-soluciones)  
+  - [Errores y soluciones](#errores-y-soluciones)  
   - [Train_cascade](#train_cascade)  
   - [Numero de Etapas](#numero-de-etapas)  
   - [Ejemplo completo](#ejemplo-completo)  
