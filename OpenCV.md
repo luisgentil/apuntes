@@ -9,11 +9,11 @@ Durante unos meses estuve estudiando este software de visión artificial, visió
   - [Colecciones de Archivos cascades.xml](#colecciones-de-archivos-cascadesxml)  
   - [Create_samples](#create_samples)  
   - [Paso a paso](#paso-a-paso)  
-  - [## Errores y soluciones](###errores-y-soluciones)  
+  - [## Errores y soluciones](#errores-y-soluciones)  
   - [Train_cascade](#train_cascade)  
   - [Numero de Etapas](#numero-de-etapas)  
   - [Ejemplo completo](#ejemplo-completo)  
-  - [Código para hacer pruebas](#codigo-para-hacer-pruebas)
+  - [Código para hacer pruebas](#código-para-hacer-pruebas)
   
   - [](#)  - [](#)  
 
