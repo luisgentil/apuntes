@@ -222,6 +222,12 @@ Hay que definir la función de éxito, y funciones para cada dirección.
 ## Herramienta 'apktool' para ver el android.manifest  
 Ver en los apuntes de Phonegap, [#herramienta apktool](https://github.com/luisgentil/apuntes/blob/master/Phonegap.md#herramienta-apktool).  
 
+## Convertir saltos de línea, retornos de carro, \n
+Por lo visto, en Windows los saltos de línea se representan por los códigos CRLF (retorno de carro + final de línea); en otros sistemas el salto de línea es más sencillo, \n por ejemplo.  
+CR = \r , LF = \n.  
+\n <> \\n, ojo con esto a la hora de sustituir.  
+Cómo he aplicado esto: quería convertir un texto con varios saltos de línea, en un texto con los cambios de línea condificados, pero todo el texto en una sola línea (para la app de coros). Al final, pude hacerlo en Notepad++, reemplazando: \r\n (=CRLF, salto en windows) por \\n (que será el salto en html).  
+
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#html-css-javascript)** ______________________________
