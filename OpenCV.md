@@ -17,7 +17,7 @@ Durante unos meses estuve estudiando este software de visión artificial, visió
   - [Pruebas con el contenido completo de una carpeta](#pruebas-con-el-contenido-completo-de-una-carpeta)  
   - [Tamaño de las imágenes de entrenamiento](#tamaño-de-las-imágenes-de-entrenamiento)  
   - [Tamaño del objeto a detectar](#tamaño-del-objeto-a-detectar)  
-
+  - [Calidad de las imágenes de entrenamiento](#calidad-de-las-imágenes-de-entrenamiento)  
   - [](#)  
 - [Adaptar una haar cascade a tracking.js](#adaptar-haar-cascade-a-tracking)  
 
@@ -31,6 +31,8 @@ Durante unos meses estuve estudiando este software de visión artificial, visió
 No es sencillo, pero sí completo.  
 
 **Artículo "Detectar diferencias entre dos imágenes con OpenCV y Python"**: interesante, https://robologs.net/2016/04/21/detectar-diferencias-entre-dos-imagenes-con-opencv-y-python/  
+
+Un buen resumen del proceso global: "How to train classifiers the best way possible"  http://answers.opencv.org/question/98754/how-to-train-classifiers-the-best-way-possible/  
 
 
 
@@ -340,6 +342,9 @@ for fichero in collection:
 Sobre el tamaño de las imágenes:  
 >*In your positives folder you keep images that contain objects. Then your positives.txt file will be formatted image_location number_objects x1 y1 w1 h1 x2 y2 w2 h2 ... xN yN wN hN. This means that those regions will be cut out by the create samples tool and then resized to the model dimensions given at the -h and -w parameters of the tool. For your negative images **just supply a folder with tons of images that are larger than your model size your selected**. During training negative windows will get sampled from those larger images. At training time the -numNeg windows can thus be quite larger than the actual number of images.  
 
+_Described images may be of different sizes. But each image should be (but not nessesarily) larger than a training window size, because these images are used to subsample negative image to the training size._ (https://docs.opencv.org/3.1.0/dc/d88/tutorial_traincascade.html)  
+
+
 ### Tamaño del objeto a detectar  
 Sobre el tamaño del objeto, -w y -h, y su influencia: 
 >*Like said before, **-w and -h are the model dimensions**, to which each new window is resized before training and which sizes are used to grab negative windows. No, you do not need to manually resize everything. Only think you should guarantee is that the **w:h ratio of your objects is about the same as the w:h ratio of the model** dimensions.  
@@ -352,10 +357,53 @@ This also influences the amount of memory needed by the application, since all w
 Objects larger than that will be detected by the multiscale image pyramid approach.  
 Smaller objects will be ignored since upscaling images to be able to detect them introduces way to much clutter and rescaling artefacts.*  
 
+### Calidad de las imágenes de entrenamiento  
+__Importante__ http://www.computer-vision-software.com/blog/2009/11/faq-opencv-haartraining/  
+>_Should **lightning conditions and background** be various on positive images?_  
+__Yes, it’s very important. On each positive image, beside object, there is background__. Try to fill this background with random noise, avoid constant background.  
+_**How much background should be on positive image?**_  
+If you have much background pixels on your positive images in comparison with object’s pixels – it’s bad since the haartraining could remember the background as feature of positive image.  
+**If you don’t have background pixels at all – it’s also bad.** There should be small background frame on positive image  
+_Should all original positive images have the same size?_  
+No, **original images can have any size**.  But it’s important that width, height of this rectangle have the same aspect ratio as -w -h.  
+_What’ s  -w and -h should I put in createsamples? Should it be always square?_  
+You can put any value to -w and -h depend on aspect ratio of the target object which you want to detect.  **But objects of smaller size will not be detected!** For faces, commonly used values are 24×24, 20×20. But you may use 24×20, 20×24, etc.  
+_Should negative images have the same size?  _
+No. But the size should not be less than -w -h, which were put during vec file generation.  
+_How many negative/positive image should I take?_
+It depends on your task.  For real cascades there should be about 1000 positive images and 2000 negative images e.g.
+Good enough proportion is  positive:negative = 1:2, but it’s not hard rule! I would recommend first to use small number of samples, generate cascade, test it, then enlarge number of samples.  
+
+### Resumen parámetros de entrenamiento  
+>**-numPos** number_of_positive_samples: This is the number of positive images used from your .vec file PER STAGE. It **SHOULD NOT be set to the total amount** of positive images in your .vec file. Initially, it should be set at around **80-90%** of the total number of images in the .vec file.  
+
+>**-numNeg** number_of_negative_samples: This is the number of negative images used from your bg.txt file PER STAGE. It **SHOULD NOT be set to the total** amount of negative images listed in your bg.txt file. It should initially be set to **2x whatever the number of positives was**.  
+
+>Readjusting Parameters: Sometimes, when you test the cascade, it will either give you **too many false positives** or **too many false negatives**. To deal with the issue of false negatives, you can either feed it **more positive** training data, or you can retrain it **with a reduced number of negatives per stage**. To solve the problem of false ~~negatives~~positives, you can **captures each false negative image and retrain** the cascade using those false positives as some of your background pictures (see notes about taking pictures with OpenCV on the FTC app).  
+
+Kumar:  
+>1)The number of **negative images must be greater than** the number of positive images.  
+>2)Try to set npos = 0.9 * number_of_positive_samples and 0.99 as a minHitRate.  
+>3)vec-file has to contain >= (npos + (numStages-1) * (1 – minHitRate) * numPose) + S, where S is a count of samples from vec-file. S is a count of samples from vec-file that can be recognized as background right away.  
+
+
+## Muestras positivas por anotación
+Es posible emplear imágenes reales con objeto, pero habría que annotarlas, es decir: señalar dónde está el objeto de interés. 
+Sobre opencv_annotation.exe, información en http://answers.opencv.org/question/75083/documentation-for-opencv_annotation/  
+
+Instrucción de anotación:
+>{tu-ruta}\opencv-2-4-31\build\x86\vc14\bin\opencv_annotation -images {tu-ruta}\OpenCV\Tejuelo\otros\tejuelos_reales\recortados -annotations {tu-ruta}\OpenCV\Tejuelo\anotaciones.txt  
+
+**Atención**: cada vez que se ejecuta (por ejmpleo, si haces grupos de imágenes, o interrumpes el proceso de anotación), la herramienta sobreescribe el nombre de archivo, no añade a lo que tuviera antes.  
+
+Tips: clic en sup-izqda, clic en inf-drcha --> marco rojo; tecla C --> verde, graba; tecla N --> siguiente imagen.  
+
+Para extraer los fotogramas empleo Video-to-video converter.  
+Tools: video > frames. Settings: save images every 2 frames, size as original, generate filename videoname + numerator.  
+
+
 ## Adaptar haar cascade a tracking  
 Ver este apartado en [Adaptar una haar cascade a tracking.js](https://github.com/luisgentil/apuntes/edit/master/Trackingjs.md)   
-
-
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#apuntes-sobre-opencv)** ______________________________
