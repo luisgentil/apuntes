@@ -15,3 +15,11 @@ var colors = new tracking.ColorTracker(['blue']); // vamos a seguir un color azu
   colors.on('track', function(event) {            // continúa el código...  
 ```
 
+[Adaptar una haar cascade a tracking.js](#adaptar-haar-cascade-a-tracking)  
+-elaborando-  
+
+
+
+_____
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#apuntes-de-trackingjs)** ______________________________
+_____
