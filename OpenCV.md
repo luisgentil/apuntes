@@ -13,7 +13,8 @@ Durante unos meses estuve estudiando este software de visión artificial, visió
   - [Train_cascade](#train_cascade)  
   - [Numero de Etapas](#numero-de-etapas)  
   - [Ejemplo completo](#ejemplo-completo)  
-  - [Código para hacer pruebas](#código-para-hacer-pruebas)
+  - [Código para hacer pruebas](#código-para-hacer-pruebas)  
+  - [Pruebas con el contenido completo de una carpeta](#pruebas-con-el-contenido-completo-de-una-carpeta)  
   
   - [](#)  - [](#)  
 
@@ -280,7 +281,46 @@ while 1:
 cap.release()
 cv2.destroyAllWindows()
 ```
+### Pruebas con el contenido completo de una carpeta  
+Código python para probar la cascade con todas las fotografías de una carpeta:  
+```python  
+# modificado, procedente de: https://pythonprogramming.net/haar-cascade-object-detection-python-opencv-tutorial/
 
+import numpy as np
+import cv2
+from os import walk
+
+def ls(ruta = '.'):
+    return next(walk(ruta))[2]
+
+ruta2 = "{tu-ruta}\OpenCV\Biblio_tracking\\biblio_tracking\\www\\img"
+
+tejuelo_cascade = cv2.CascadeClassifier("{tu-ruta}\OpenCV\Tejuelo\cascades\cascade-700-1400-19.xml")
+
+collection = ls(ruta2)
+
+print collection
+
+for fichero in collection: 
+    element = ruta2 + "\\" + fichero
+    img = cv2.imread(element)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # add this
+    # image, reject levels level weights.
+    tejuelos = tejuelo_cascade.detectMultiScale(gray, 1.2, 5) # 50, 50)#
+    print tejuelos
+
+    # add this
+    for (x,y,w,h) in tejuelos:
+        cv2.rectangle(img,(x,y),(x+w,y+h),(0,250,0),2)
+
+    cv2.imshow('img' + element, img)
+
+    k = cv2.waitKey() & 0xff
+
+    cv2.destroyAllWindows()
+```
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#apuntes-sobre-opencv)** ______________________________
