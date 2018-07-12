@@ -15,8 +15,12 @@ Durante unos meses estuve estudiando este software de visión artificial, visió
   - [Ejemplo completo](#ejemplo-completo)  
   - [Código para hacer pruebas](#código-para-hacer-pruebas)  
   - [Pruebas con el contenido completo de una carpeta](#pruebas-con-el-contenido-completo-de-una-carpeta)  
-  
-  - [](#)  - [](#)  
+  - [Tamaño de las imágenes de entrenamiento](#tamaño-de-las-imágenes-de-entrenamiento)  
+  - [Tamaño del objeto a detectar](#tamaño-del-objeto-a-detectar)  
+
+  - [](#)  
+- [Adaptar una haar cascade a tracking.js](#adaptar-haar-cascade-a-tracking)  
+
 
 ### Información básica  
 **Guía de OpenCV y Python**: En www.programarfacil.org  "INTRODUCCIÓN A LA VISIÓN ARTIFICIAL CON OPENCV Y PYTHON", de Luis del Valle. Es muy básica, pero para comenzar me ha servido.  
@@ -49,6 +53,8 @@ OpenCV 2.4.13.6 documentation » OpenCV User Guide » Cascade Classifier Trainin
 https://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html  
 
 **"Training cascade files"** de Jeff Thompson: https://github.com/jeffThompson/MirrorTest/blob/master/TrainingInstructions.md . Me parece muy interesante, porque es una guía paso-a-paso, muy clara ahora que ya conozco el tema y he leído bastante material.  
+
+**Dudas y FAQs** Un recurso interesante, mucha información práctica sobre dudas y FAQs, ordenada por etapas del proceso: http://www.computer-vision-software.com/blog/2009/11/faq-opencv-haartraining/   
 
 
 ### Colecciones de Archivos cascades.xml 
@@ -131,6 +137,12 @@ Recapitulando: los dos errores se han resuelto....
 - para create samples, la ruta es relativa, un directorio por debajo de la carpeta de proyecto;  
 - para train cascade, la ruta debe ser completa: cuando la ruta de los negativos era completa en la lista de bg.txt;  
 - Out of memory: cerrar aplicaciones, usar un procesador de 64 bits, que gestiona más memoria que el de 32.  
+
+Sobre el mensaje "Required leaf false alarm rate achieved. Branch training terminated", leo http://answers.opencv.org/question/84852/traincascades-error-required-leaf-false-alarm-rate-achieved-branch-training-terminated/ .
+Encuentro útil:
+>*Change -maxFalseAlarmRate to for example 0.7, which forces individual stages to be more complex. This is what I suggest if you dont want to add data.*  
+
+
 
 ## Train_cascade 
 Comienzo a leer sobre haar cascade training parameters, en http://answers.opencv.org/question/39160/opencv_traincascade-parameters-explanation-image-sizes-etc/
@@ -321,6 +333,29 @@ for fichero in collection:
 
     cv2.destroyAllWindows()
 ```
+
+### Tamaño de las imágenes de entrenamiento
+(de http://answers.opencv.org/question/39160/opencv_traincascade-parameters-explanation-image-sizes-etc/)  
+
+Sobre el tamaño de las imágenes:  
+>*In your positives folder you keep images that contain objects. Then your positives.txt file will be formatted image_location number_objects x1 y1 w1 h1 x2 y2 w2 h2 ... xN yN wN hN. This means that those regions will be cut out by the create samples tool and then resized to the model dimensions given at the -h and -w parameters of the tool. For your negative images **just supply a folder with tons of images that are larger than your model size your selected**. During training negative windows will get sampled from those larger images. At training time the -numNeg windows can thus be quite larger than the actual number of images.  
+
+### Tamaño del objeto a detectar  
+Sobre el tamaño del objeto, -w y -h, y su influencia: 
+>*Like said before, **-w and -h are the model dimensions**, to which each new window is resized before training and which sizes are used to grab negative windows. No, you do not need to manually resize everything. Only think you should guarantee is that the **w:h ratio of your objects is about the same as the w:h ratio of the model** dimensions.  
+Effect on the training procedure  
+The larger the dimensions, the more features can be calculated and the more weak classifiers will be gathered for the boosting process.  
+This also influences the amount of memory needed by the application, since all weak classifiers are stored in RAM memory during the process. **If you application crashes due to not enough memory, you will need to reduce your model size**.  
+
+>Effect on the detection procedure  
+*The __dimensions__ specify the __smallest object size__ you will be able to detect.  
+Objects larger than that will be detected by the multiscale image pyramid approach.  
+Smaller objects will be ignored since upscaling images to be able to detect them introduces way to much clutter and rescaling artefacts.*  
+
+## Adaptar haar cascade a tracking  
+Ver este apartado en [Adaptar una haar cascade a tracking.js](https://github.com/luisgentil/apuntes/edit/master/Trackingjs.md)   
+
+
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#apuntes-sobre-opencv)** ______________________________
