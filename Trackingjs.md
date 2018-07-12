@@ -12,7 +12,7 @@ Puedes descargar el proyecto desde su web, pero no es necesario para usar la lib
 
 El proyecto completo tiene otras ventajas, a saber: herramientas de conversión, etc.  
 
-### Cómo modificar el tamaño por el que se reconoce un objeto en Tracking.js
+## Cómo modificar el tamaño por el que se reconoce un objeto en Tracking.js
 Hay que usar setMinDimension(pixels) y setMinGroupSize(pixels), que son parámetros del tracker.  
 Hay que modificarlo después de crear la instancia del tracker que queremos seguir, por ejemplo:  
 ```javascript
@@ -23,7 +23,7 @@ var colors = new tracking.ColorTracker(['blue']); // vamos a seguir un color azu
   colors.on('track', function(event) {            // continúa el código...  
 ```
 
-### Adaptar una haar cascade a tracking.js  
+## Adaptar una haar cascade a tracking.js  
 **Información previa y referencias** en la sección 'Issues' del proyecto Tracking.js en Github:  
 "__gulp-converter-tjs__" _Converts new and old type of OpenCV HaarCascade XML data to tracking.js' internal format._  
 https://github.com/cirocosta/gulp-converter-tjs  (from #197)  Otras relacionadas: #120
