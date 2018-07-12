@@ -403,7 +403,7 @@ Tools: video > frames. Settings: save images every 2 frames, size as original, g
 
 
 ## Adaptar haar cascade a tracking  
-Ver este apartado en [Adaptar una haar cascade a tracking.js](https://github.com/luisgentil/apuntes/edit/master/Trackingjs.md)   
+Ver este apartado en [Adaptar una haar cascade a tracking.js](https://github.com/luisgentil/apuntes/blob/master/Trackingjs.md)   
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#apuntes-sobre-opencv)** ______________________________
