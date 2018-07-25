@@ -16,6 +16,11 @@ Mis apuntes de HTML, CSS, Javascript.
 - [CSS básico](#css-básico)
 - [Hammer.js, detección de eventos](#hammerjs)
 - [Herramienta 'apktool' para ver el android.manifest](#herramienta-apktool-para-ver-el-androidmanifest)
+- [Convertir saltos de línea, retornos de carro, \n](#convertir-saltos-de-línea)  
+- [Local Storage](#local-storage)  
+- [Cómo ocultar o mostrar un menú](#cómo-ocultar-o-mostrar-un-menú)  
+- [Mostrar un icono](#mostrar-un-icono)  
+- [Cómo usar una fuente de Google](#cómo-usar-una-fuente-de-google)  
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** ______________________________________________
 _____
@@ -222,12 +227,68 @@ Hay que definir la función de éxito, y funciones para cada dirección.
 ## Herramienta 'apktool' para ver el android.manifest  
 Ver en los apuntes de Phonegap, [#herramienta apktool](https://github.com/luisgentil/apuntes/blob/master/Phonegap.md#herramienta-apktool).  
 
-## Convertir saltos de línea, retornos de carro, \n
+## Convertir saltos de línea
+#### Convertir saltos de línea, retornos de carro, \n
 Por lo visto, en Windows los saltos de línea se representan por los códigos CRLF (retorno de carro + final de línea); en otros sistemas el salto de línea es más sencillo, \n por ejemplo.  
 CR = \r , LF = \n.  
 \n <> \\n, ojo con esto a la hora de sustituir.  
 Cómo he aplicado esto: quería convertir un texto con varios saltos de línea, en un texto con los cambios de línea condificados, pero todo el texto en una sola línea (para la app de coros). Al final, pude hacerlo en Notepad++, reemplazando: \r\n (=CRLF, salto en windows) por \\n (que será el salto en html).  
 
+## Local Storage  
+#### Local Storage: alternativa viable a las variables globales
+He tenido problemas usando variables "globales", que no actúan como tales. Así que uso Local Storage, que sí persiste entre distintas funciones.  
+La pega, que no permite estructura anidada.  
+```
+Almacenar: localStorage.[variable] = [valor]  
+Recuperar: document.getElementById("result").innerHTML = localStorage.[variable]  
+```  
+sessionStorage. es lo mismo, pero sólo persiste en esa sesión.  
+
+
+## Cómo ocultar o mostrar un menú  
+Para aprovechar toda la superficie de pantalla, podemos hacer que el menú se oculte y sólo se muestre al pulsar un botón. Al pulsar de nuevo, se oculta. Esto se logra mediante la opción toggle:  
+```
+function Ocultar() {
+	document.getElementById('caja-menu').classList.toggle('fuera');}
+
+En CSS: 
+	.fuera {display: none;}
+```
+Esto se combina con la posición (absolute, relative) de la caja de botones. Esta caja debe tener posición relativa al div sobre el que se sitúa (y lo contiene).  
+
+Supongo que, para ocultar cuando se elige uno de los botones incluidos en la botonera, hay que añadir una llamada a Ocultar() para que oculte la botonera. FALSO: al llamar, hace toggle; pero lo hace cuando se llama la función cargar, que se llama desde otras partes de la aplicación.  
+
+## Mostrar un icono  
+Hay que importar una librería de iconos, mediante una línea en el <head>. Después, hay que usar el método de esa librería para insertar el icono, normalmente mediante una etiqueta <i> o <span>. Admiten estilos vía CSS.  
+
+```
+Font Awesome icons: 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+			<i class="fa fa-bars"></i>  
+			<i class="fa fa-bars" style="font-size:60px;color:lightblue;text-shadow:2px 2px 4px #000000;"></i>  
+
+Google icons:		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">  
+			<i class="material-icons">attachment</i>  
+			<i class="material-icons" style="font-size:60px;color:lightblue;text-shadow:2px 2px 4px #000000;">cloud</i>  
+```
+Las fuentes de google especifican el nombre dentro del <i>, con un nombre.  
+
+Para 'amontonar' iconos (por ejemplo, para fotos-prohibición), en Awasome Icons hay que usar una clase especial, fa-stack, para el agrupamiento, la clase fa-stack-1x para el icono de tamaño normal, y stack-2x para el icono mayor. Con fa-inverse se puede alternar el color.   
+Más detalles en https://www.w3schools.com/icons/fontawesome_icons_intro.asp .  
+```
+	<button class="otroddd otro" id="botonAcordes" onclick="Ban()">
+		<span class="fa-stack">
+			<i class="fa fa-hashtag fa-stack-1x"></i>
+			<i id="ocultar" class="fa fa-ban fa-stack-2x rojo"></i>
+		</span>
+	</button>  
+```
+
+## Cómo usar una fuente de Google  
+Para especificar una fuente de google, en el head del html hay que insertar:  
+<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>  
+Después, en el CSS, especificar la fuente:  
+	font-family: 'Acme';  
+	
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#html-css-javascript)** ______________________________
