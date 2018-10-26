@@ -286,9 +286,11 @@ Más detalles en https://www.w3schools.com/icons/fontawesome_icons_intro.asp .
 
 ## Cómo usar una fuente de Google  
 Para especificar una fuente de google, en el head del html hay que insertar:  
+```html
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>  
+```
 Después, en el CSS, especificar la fuente:  
-	font-family: 'Acme';  
+```	font-family: 'Acme';  ```
 	
 
 ## Cómo insertar botones de compartir en Redes Sociales  
