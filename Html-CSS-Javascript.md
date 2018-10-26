@@ -21,6 +21,7 @@ Mis apuntes de HTML, CSS, Javascript.
 - [Cómo ocultar o mostrar un menú](#cómo-ocultar-o-mostrar-un-menú)  
 - [Mostrar un icono](#mostrar-un-icono)  
 - [Cómo usar una fuente de Google](#cómo-usar-una-fuente-de-google)  
+- [Cómo insertar botones de compartir en Redes Sociales](#cómo-insertar-botones-de-compartir-en-Redes-Sociales)  
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** ______________________________________________
 _____
@@ -288,6 +289,11 @@ Para especificar una fuente de google, en el head del html hay que insertar:
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>  
 Después, en el CSS, especificar la fuente:  
 	font-family: 'Acme';  
+	
+
+## Cómo insertar botones de compartir en Redes Sociales  
+La forma más sencilla de insertar botones (que funcionen) para compartir contenido en redes sociales es usar el servicio web de **https://sharingbuttons.io/** .  
+Sólo hay que especificar tres parámetros, copiar el html y el css, y ya funciona.  
 	
 
 _____
