@@ -271,7 +271,7 @@ Google icons:		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?fa
 			<i class="material-icons">attachment</i>  
 			<i class="material-icons" style="font-size:60px;color:lightblue;text-shadow:2px 2px 4px #000000;">cloud</i>  
 ```
-Las fuentes de google especifican el nombre dentro del <i>, con un nombre.  
+Las fuentes de google especifican el nombre dentro del ```<i>```, con un nombre.  
 
 Para 'amontonar' iconos (por ejemplo, para fotos-prohibición), en Awasome Icons hay que usar una clase especial, fa-stack, para el agrupamiento, la clase fa-stack-1x para el icono de tamaño normal, y stack-2x para el icono mayor. Con fa-inverse se puede alternar el color.   
 Más detalles en https://www.w3schools.com/icons/fontawesome_icons_intro.asp .  
