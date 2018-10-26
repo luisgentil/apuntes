@@ -260,7 +260,7 @@ Esto se combina con la posición (absolute, relative) de la caja de botones. Est
 Supongo que, para ocultar cuando se elige uno de los botones incluidos en la botonera, hay que añadir una llamada a Ocultar() para que oculte la botonera. FALSO: al llamar, hace toggle; pero lo hace cuando se llama la función cargar, que se llama desde otras partes de la aplicación.  
 
 ## Mostrar un icono  
-Hay que importar una librería de iconos, mediante una línea en el <head>. Después, hay que usar el método de esa librería para insertar el icono, normalmente mediante una etiqueta <i> o <span>. Admiten estilos vía CSS.  
+Hay que importar una librería de iconos, mediante una línea en el <head>. Después, hay que usar el método de esa librería para insertar el icono, normalmente mediante una etiqueta ```<i>``` o ```<span>```. Admiten estilos vía CSS.  
 
 ```
 Font Awesome icons: 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
