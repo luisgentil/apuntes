@@ -20,6 +20,12 @@ Durante unos meses estuve estudiando este software de visión artificial, visió
   - [Calidad de las imágenes de entrenamiento](#calidad-de-las-imágenes-de-entrenamiento)  
   - [](#)  
 - [Adaptar una haar cascade a tracking.js](#adaptar-haar-cascade-a-tracking)  
+- [Operaciones básicas](#operaciones-básicas)
+  - [Crear una máscara de color](#crear-una-máscara-de-color)
+  - [ Meclar dos imágenes](#meclar-dos-imágenes)
+  - [Crear una imagen negra](#crear-una-imagen-negra)
+  
+
 
 
 ### Información básica  
@@ -403,7 +409,73 @@ Tools: video > frames. Settings: save images every 2 frames, size as original, g
 
 
 ## Adaptar haar cascade a tracking  
-Ver este apartado en [Adaptar una haar cascade a tracking.js](https://github.com/luisgentil/apuntes/blob/master/Trackingjs.md)   
+Ver este apartado en [Adaptar una haar cascade a tracking.js](https://github.com/luisgentil/apuntes/blob/master/Trackingjs.md)  
+
+## Operaciones básicas
+### Crear una máscara de color
+Para crear una máscara de color hay que usar la función cv2.inRange, y dos valores: min y max de color.  
+Se pueden hacer masks en RGB, no hace falta que sean solo HSV.  
+Ejemplo: función *resume_lluvia*.
+
+```python
+## 'Función resume-lluvia' 
+## Este código lee una imagen, extrae los puntos de color de cada tipo de lluvia, y lo acumula en una imagen 'final.png' 
+
+import cv2
+import numpy as np
+
+def resume_lluvia(archivo):
+    final ="images\\final.png"
+
+    foto = cv2.imread(archivo)
+    foto_fin = cv2.imread(final)
+    
+    #  Azul oscuro ,  Azul claro , Cyan , Verde oscuro ,  Verde medio ,  Verde claro 
+    colores = [[0,0,252], [0,148,252], [0,252,252], [67, 131, 35], [0,192,0], [0,255,0]]
+    
+    for color in colores:
+        if colores.index(color) == 0:
+            foto_fin = dst = np.zeros((530, 480))
+       
+        # Take each frame
+
+        # Convert BGR to HSV
+        hsv = cv2.cvtColor(foto, cv2.COLOR_BGR2RGB)
+       
+        # define range of blue color in HSV
+        lower_ = np.array(color)
+        upper_ = np.array(color)
+
+        # Threshold the HSV image to get only blue colors
+        mask = cv2.inRange(hsv, lower_, upper_)
+
+        # Bitwise-AND mask and original image
+        res = cv2.bitwise_and(foto, foto, mask = mask)
+        #print mask.shape, mask.dtype
+        print "fin:", foto_fin.shape, res.dtype
+        foto_fin = (foto_fin + mask)
+
+        cv2.imshow('Original',foto)
+        cv2.imshow('color', mask)
+        cv2.imshow('resta', res)
+        cv2.imshow('dst', foto_fin)
+
+        cv2.waitKey(0)  # espera a cualquier tecla
+        cv2.destroyAllWindows()
+
+    cv2.imwrite(final, foto_fin)
+```
+
+### Meclar dos imágenes
+mezclar imágenes: con cv.add(im1, im2).
+
+### Crear una imagen negra
+crea una imagen negra (todo 0): 
+``python
+black = np.zeros((530, 480, 3)) # tamaño en pixels, 3 canales
+cv2.imwrite("images\\todo-negro.png", black)
+```
+
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#apuntes-sobre-opencv)** ______________________________
