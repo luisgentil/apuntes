@@ -471,7 +471,7 @@ mezclar imágenes: con cv.add(im1, im2).
 
 ### Crear una imagen negra
 crea una imagen negra (todo 0): 
-``python
+```python
 black = np.zeros((530, 480, 3)) # tamaño en pixels, 3 canales
 cv2.imwrite("images\\todo-negro.png", black)
 ```
