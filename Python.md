@@ -5,10 +5,13 @@
 - [Numpy](#numpy)  
 - [Scipy](#scipy)  
 - [Matplotlib](#matplotlib)  
-    - [rear una recta de regresión](#crear-una-recta-de-regresión)
+    - [Crear una recta de regresión](#crear-una-recta-de-regresión)  
 - [OpenCV](#opencv)  
-- [PIL](#pil)  
-- [](#)
+- [PIL](#pil)    
+- [Otros:](#otros)  
+    - [Descargar un fichero de internet](#descargar-un-fichero-de-internet)  
+    - [Formatear números decimales](#formatear-números-decimales)  
+    - [Cómo pintar 3 puntos y las líneas que los unen](#cómo-pintar-3-puntos-y-las-líneas-que-los-unen)  
 
 ### Numpy 
 Una rápida [introducción en la web de Scipy](https://docs.scipy.org/doc/numpy-1.15.0/user/quickstart.html).  
@@ -21,7 +24,7 @@ Dimensiones: llamadas 'ejes'. primer eje con 2 elementos, 2º eje con tres eleme
  [ 0., 1., 2.]]
  ```
  Atributos importantes: ndarray.ndim, ndarray.shape, ndarray.size, **ndarray.dtype**.  
- Funciones / utilidades: np.arange, np.zeros, np.ones, .reshape, funciones universales (ufunc) que se aplican a todo el array a la vez.  
+ Funciones / utilidades: np.arange, np.zeros, np.ones, .reshape, funciones universales (ufunc) que se aplican a todo el array a la vez, np.average(data).  
  
  
 ### Scipy
@@ -56,6 +59,22 @@ Para crear la recta con **Numpy**:  más complejo.
     pendiente, ord_origen = np.linalg.lstsq(A, xx)[0]
 ```
 
+#### Cómo pintar 3 puntos y las líneas que los unen
+```python
+center_0 = np.array([100, -100])
+center_1 = np.array([253,-238])
+center_2 = np.array([300, -300])
+
+center = np.vstack((center_0, center_1, center_2))
+
+gg = np.hsplit(center,2)
+
+## plt.plot (serie de Xs, serie de Ys)
+plt.plot(gg[0],gg[1], "o")
+plt.plot(gg[0],gg[1])
+plt.legend()
+plt.show()
+```
 
 ### OpenCV
 Básicamente, hay que tener en cuenta lo que ya resumí en [Apuntes sobre OpenCV](https://github.com/luisgentil/apuntes/blob/master/OpenCV.md)  
@@ -95,6 +114,23 @@ Recojo aquí información útil, porque siempre me planteo la duda:
 > (encontrado en [este enlace](https://blogthinkbig.com/diferencia-entre-png-jpg-y-gif))  
 Así que usaré formato PNG.  
 
+### Otros
+#### Descargar un fichero de internet
+```python
+## PRUEBAS PARA descargar imágenes de forma automática
+import urllib.request
+print('Beginning file download with urllib2...')
+
+ultimo_file = 'C:\images\201812031210_r8se.gif'
+url = 'http://www.aemet.es/imagenes_d/eltiempo/observacion/radar/201812031210_r8se.gif'  
+urllib.request.urlretrieve(url, ultimo_file) 
+```
+#### Formatear números decimales
+```python
+'y= ' + "{0:.2f}".format(0.2589754) +' * x + ' + "{0:.2f}".format(5569.32547)
+```
+`'y= 0.26 * x + 5569.33'`
+ 
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#indice)** ______________________________
