@@ -116,14 +116,22 @@ Así que usaré formato PNG.
 
 ### Otros
 #### Descargar un fichero de internet
+Con el siguiente código se puede descargar un recurso de internet, vía url (Python 2.7).  
+Uso el módulo urllib2 porque facilita la transición a Python 3.  
 ```python
-## PRUEBAS PARA descargar imágenes de forma automática
-import urllib.request
-print('Beginning file download with urllib2...')
-
-ultimo_file = 'C:\images\201812031210_r8se.gif'
-url = 'http://www.aemet.es/imagenes_d/eltiempo/observacion/radar/201812031210_r8se.gif'  
-urllib.request.urlretrieve(url, ultimo_file) 
+import urllib2
+ultimo_file = 'http://www.aemet.es/imagenes_d/eltiempo/observacion/radar/201901111120_r8se.gif'
+nombre = ultimo_file.rsplit('/')[-1]
+resource = urllib2.urlopen(ultimo_file)
+#ruta = os.getcwd() + "\\images\\" + nombre                         # en disco físico
+ruta = '/content/gdrive/My Drive/Colab Notebooks/images/' + nombre  # en Google Drive
+print ruta
+output = open(ruta,"wb")
+output.write(resource.read())
+output.close()
+# para comprobar si lo ha grabado, descomentar lo siguiente
+#import os
+#print os.path.isfile(ruta)
 ```
 #### Formatear números decimales
 ```python
