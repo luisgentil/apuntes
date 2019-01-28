@@ -24,7 +24,7 @@ Durante unos meses estuve estudiando este software de visión artificial, visió
   - [Crear una máscara de color](#crear-una-máscara-de-color)
   - [ Meclar dos imágenes](#meclar-dos-imágenes)
   - [Crear una imagen negra](#crear-una-imagen-negra)
-  
+  - [Ver una imagen cv2 con matplotlib](#ver-imagen-cv2)  
 
 
 
@@ -476,6 +476,20 @@ black = np.zeros((530, 480, 3)) # tamaño en pixels, 3 canales
 cv2.imwrite("images\\todo-negro.png", black)
 ```
 
+### Ver imagen cv2
+Para ver una imagen CV2 usando matplotlib (por ejemplo, cuando usamos Colaboratory que no permite **visualizar** con cv2), hay que tener en cuenta:  
+- abrir la imagen con cv2.imread --> tenemos un numpy array;  
+- abrir con cv2.cvtColor(anterior, cv2.COLOR_BGR2RGB) --> tenemos un array transformado en RGB;  
+- mostrar con matplotlib --> muestra array con estructura RGB.  
+```python
+import cv2
+import matplotlib.image as mpimg
+imagen5 = "images/201812130520_r8se.png"
+imagen5num = cv2.imread(imagen5)
+img = cv2.cvtColor(imagen5num, cv2.COLOR_BGR2RGB)
+imgplot = plt.imshow(img)
+plt.show()
+```
 
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#apuntes-sobre-opencv)** ______________________________
