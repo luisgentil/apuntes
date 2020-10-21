@@ -1,5 +1,8 @@
 # Colaboratory 'Colab' de Google
 
+#### Indice
+
+
 ### Conectar con almacenamiento en Drive
 Para usar el almacenamiento en Drive, para grabar datos entre distintas ejecuciones del código, lo primero es conectar con el Drive de la cuenta de Google desde la que se ejecuta el cuaderno Colab.
 
@@ -15,3 +18,14 @@ from google.colab import drive
 print('Conectando con Drive.\n Un momento, por favor....')
 drive.mount('/content/gdrive')
 ```
+
+
+
+
+
+
+
+
+_____
+___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#indice)** ______________________________
+_____
