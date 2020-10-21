@@ -116,6 +116,19 @@ Así que usaré formato PNG.
 
 ### Otros
 #### Descargar un fichero de internet
+##### Python 3
+Con el siguiente código se descarga una página de intgernet, vía url en Python 3 (Colab ya no admite 2.7).
+```python
+def averiguar(url):
+  """Descarga el texto de una url"""
+  # Hace una descarga de la url
+  resource = urllib.request.urlopen(url) 
+  html_response = resource.read()
+  encoding = resource.headers.get_content_charset('utf-8')
+  decoded_html = html_response.decode(encoding)
+  return dedoded_html
+```
+##### Python 2.7
 Con el siguiente código se puede descargar un recurso de internet, vía url (Python 2.7).  
 Uso el módulo urllib2 porque facilita la transición a Python 3.  
 ```python
