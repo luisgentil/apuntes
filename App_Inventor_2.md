@@ -1,5 +1,5 @@
 
-Apuntes sobre App Inventor 2
+# Apuntes sobre App Inventor 2
 
 Un lugar para recopilar lo que aprendo (y no quiero olvidar ;) ) sobre AI2.
 
