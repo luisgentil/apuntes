@@ -3,8 +3,15 @@ Apuntes sobre App Inventor 2
 
 Un lugar para recopilar lo que aprendo (y no quiero olvidar ;) ) sobre AI2.
 
+## Ejecutar en 2º plano (cómo simularlo)
+App Inventor no ejecuta aplicaciones en segundo plano, cuando no está abierta como app principal simplemente se detiene. 
+En algunos casos ese comportamiento hace inútil la app, así que hay que mantener el móvil encendido y con la app en primer plano.  
+Este sencillo bloque lo consigue:
+![Reloj siempre encendido](imagenes/clock-always-awoke-blocks.png)  
+(22/10/2020)
+
 ## Firebase module (experimental)
-Por fin funcionó. Describo los pasos que hice, al ver que nada permitía consultar los datos grabados en Firebase.  
+Por fin funcionó (30-nov-2017). Describo los pasos que hice, al ver que nada permitía consultar los datos grabados en Firebase.  
 Primero, desde JS, probé el acceso a la BD en Firebase 'https://ejemplo-app-inventor.firebaseio.com/', y comprobé que era posible leer y escribir.  
 Después, creé una nueva app, para grabar pares tag-valor, y leer valores a partir de una tag. Usé la BD DEFAULT, y funcionó.  
 Entonces sustituí la app Default por la mía, grabé y leí: funcionó. Al mirar la estructura desde la consola de Firebase, me encontré con lo siguiente: la BD crea un service para la app, con su nombre, y es ahí donde se escriben y leen los datos.  
