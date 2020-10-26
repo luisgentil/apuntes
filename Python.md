@@ -6,12 +6,14 @@
 - [Scipy](#scipy)  
 - [Matplotlib](#matplotlib)  
     - [Crear una recta de regresión](#crear-una-recta-de-regresión)  
+    - [Cómo pintar 3 puntos y las líneas que los unen](#cómo-pintar-3-puntos-y-las-líneas-que-los-unen)  
 - [OpenCV](#opencv)  
 - [PIL](#pil)    
 - [Otros:](#otros)  
     - [Descargar un fichero de internet](#descargar-un-fichero-de-internet)  
     - [Formatear números decimales](#formatear-números-decimales)  
-    - [Cómo pintar 3 puntos y las líneas que los unen](#cómo-pintar-3-puntos-y-las-líneas-que-los-unen)  
+    - [Formatear cadenas](#formatear-cadenas)
+
 
 ### Numpy 
 Una rápida [introducción en la web de Scipy](https://docs.scipy.org/doc/numpy-1.15.0/user/quickstart.html).  
@@ -153,6 +155,23 @@ output.close()
 `'y= 0.26 * x + 5569.33'`
  
 
+#### Formatear cadenas
+Para imprimir cadenas siguiendo un patrón, lo más útil es usar format. Ejemplo:
+```python
+print ('{0:=^22s} {1:=^16s} {2: ^6s} {3:=^22s} {4:=^16s}'.format("Fecha anterior","Anuncios",'==',"_Ahora_","_Nuevos_"))
+```
+Imprimirá lo siguiente: 
+
+```====Fecha anterior==== ====Anuncios====   ==   =======_Ahora_======== ====_Nuevos_==== ```
+
+Explicación {0:=^22s} :
++ '0' es el nº de orden, se corresponderá con el primer elemento que se va a formatear, en este caso, "Fecha anterior".
++  '=' es el carácter que se usará de relleno, si es necesario, para alcanzar el nº de caracteres asignado.
++  '^': cómo se organiza el texto, en este caso es centrado. Para izquierda o derecha, '<' o '>'.
++  22: el nº de caracteres que se asigna a esa cadena, si no se alcanza se usará el carácter de relleno.
++  s/d/f: string, nº entero, floating point number.
+
+Toda la información en: https://pyformat.info/.
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** _______________ **[volver arriba](#indice)** ______________________________
 _____
