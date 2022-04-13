@@ -8,7 +8,7 @@ En general, las reglas que me aplico son:
 -En cada apartado, señalo primero lo que FUNCIONA, y después lo que NO funciona.  
 -Orden inverso (lo más reciente arriba)  
 
-### [LibreOffice Calc](https://github.com/luisgentil/apuntes/blob/master/LibreOfficeCalc.md)
+### [LibreOffice](https://github.com/luisgentil/apuntes/blob/master/LibreOffice.md)
 ### [Colaboratory](https://github.com/luisgentil/apuntes/blob/master/Colaboratory.md)
 ### [Html, CSS y Javascript](https://github.com/luisgentil/apuntes/blob/master/Html-CSS-Javascript.md)
 ### [AppInventor2 (MIT)](https://github.com/luisgentil/apuntes/blob/master/App_Inventor_2.md)
