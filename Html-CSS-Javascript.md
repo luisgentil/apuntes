@@ -4,6 +4,7 @@ Mis apuntes de HTML, CSS, Javascript.
 
 
 ## Índice
+- [Forzar la recarga de un recurso](#forzar-la-recarga-de-un-recurso)
 - [Tips de sintaxis MD para escribir archivos README.md](#tips-de-sintaxis-md-para-escribir-archivos-readmemd)  
 - [Llamada a una función, con parámetros](#llamada-a-una-función-con-parámetros)  
 - [Analizar el código en la consola](#analizar-el-código-en-la-consola)  
@@ -25,6 +26,12 @@ Mis apuntes de HTML, CSS, Javascript.
 _____
 ___________________ **[volver al índice de 'apuntes'](https://github.com/luisgentil/apuntes/blob/master/README.md)** ______________________________________________
 _____
+
+## Forzar la recarga de un recurso  
+Para obligar a que la web recargue un recurso desde el servidor, y no lo cargue desde la caché, hay que añadir  un parámetro '?version=202205101901'
+Se fuerza que descargue la versión del servidor, y no la de caché, cuando nos interesa por haber cambiado el contenido. Se cambia el nº que es la fecha, y obliga a buscar el fichero nuevo. 
+Típico para una nueva versión de .css o de .js . 
+
 
 ## Llamada a una función, con parámetros  
 FUNCIONA  
