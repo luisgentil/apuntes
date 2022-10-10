@@ -15,6 +15,11 @@
     - [Formatear cadenas](#formatear-cadenas)
 
 
+### PIP
+Cómo usar un módulo SIN usar pip: [fuente]https://es.stackoverflow.com/questions/313737/como-instalar-modulos-en-python-sin-usar-pip
+Suele funcionar: descargar el módulo desde pypi, descomprimir en la carpeta lib correspondiente a la instalación de Python (portable, si aplica), y suele funcionar.
+
+
 ### Numpy 
 Una rápida [introducción en la web de Scipy](https://docs.scipy.org/doc/numpy-1.15.0/user/quickstart.html).  
 Arrays: entre []. Un punto en el espacio: [1,2,4].
