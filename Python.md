@@ -2,6 +2,7 @@
 #### Indice
 *(Incluye también notas sobre módulos, hasta que sean tan grandes que se hagan independientes)*.  
 
+- [PIP](#pip)
 - [Numpy](#numpy)  
 - [Scipy](#scipy)  
 - [Matplotlib](#matplotlib)  
